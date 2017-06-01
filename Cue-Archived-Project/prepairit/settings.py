@@ -74,7 +74,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'prepairit',
         'USER': 'prepairit',
-        'PASSWORD': '0EC3448B9DD7812FABB4329000A12F300A0E30BFB34C637B654AE519672D2BB0',
+        'PASSWORD': 'prepairit',
         'HOST': 'localhost',
         'PORT': '',
     }
@@ -98,10 +98,12 @@ TEMPLATE_DIRS = [
     os.path.join(BASE_DIR, 'templates')
 ]
 
-TEMPLATE_CONTEXT_PROCESSORS = (
+TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
     'ppiauth.context_processors.login_form',
     'django.core.context_processors.request',
 )
+
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
@@ -117,12 +119,13 @@ MEDIA_ROOT = '/var/tmp/media/'
 MEDIA_URL = '/media/'
 
 # Email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'shruti.hiremath@cuelogic.co.in'
-EMAIL_HOST_PASSWORD = 'shruti0409'
+EMAIL_HOST_USER = 'bug.system.app1@gmail.com'
+EMAIL_HOST_PASSWORD = 'bugsystem'
 EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = 'shruti.hiremath@cuelogic.co.in'
+DEFAULT_FROM_EMAIL = 'bug.system.app1@gmail.com'
 
 RECAPTCHA_PUBLIC_KEY = '6LcrYgATAAAAAGHyVeRJbnP-XIgTzUytlzcNYQ7f'
 # Private key for Recaptcha

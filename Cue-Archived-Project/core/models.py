@@ -3,7 +3,7 @@ from datetime import datetime
 from django.db import models
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
-# from django.utils.html import strip_entities, strip_tags
+from django.utils.html import strip_entities, strip_tags
 
 # Constant for maximum number of display messages on the home page
 MAX_DISPLAY_MSG = 2
@@ -13,8 +13,8 @@ class HomePageConfig(models.Model):
     active = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    # def display_message(self):
-    #    return strip_entities(strip_tags(self.display_msg))
+    def display_message(self):
+       return strip_entities(strip_tags(self.display_msg))
 
     def save(self, *args, **kwargs):
         homepage_msgs = HomePageConfig.objects.all()

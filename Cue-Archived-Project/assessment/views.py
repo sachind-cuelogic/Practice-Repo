@@ -10,8 +10,11 @@ from knowledgebase.views import replacestring
 
 def create_practice_test(request):
     categories = Category.objects.all()
+    print "categories==>",categories
     topics = Topic.objects.all()
-    question = QuestionAnswer.objects.get(id=1)
+    print "topics==>",topics
+    question = QuestionAnswer.objects.all()
+    print "question==>",question
     response = render(request, 'assessment/create_practice_test.html',
                       {'categories': categories, 'topics': topics,
                        'question': question})

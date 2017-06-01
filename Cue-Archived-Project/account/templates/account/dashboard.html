@@ -43,7 +43,38 @@
                   </div>
               </li>
 
-              <li><a href="#"><span class="glyphicon glyphi glyphicon-hourglass"></span> Assement</a></li>
+
+
+
+
+
+               {% load assessment_utils %}
+
+              
+              <li id="collapsable_div2"><a href="#"><span class="glyphicon glyphi glyphicon-retweet"></span> Assement <sub class="glyphicon glyphi glyphicon-circle-arrow-down"></sub></a>
+                  <div id="nav-inner-start">
+                      <ul class="nav nav-sidebar nav-stacked">
+
+
+
+                      {% url_encode 'None' request.get_full_path as encoded_url %}
+
+                      <li><a href="{% url 'ppi-assessment:practice_test_create' %}"><span class="glyphicon glyphi glyphicon-user"></span> create_practice_test</a></li>
+                      <li><a href="{% url 'ppi-assessment:practice_test_take' %}"><span class="glyphicon glyphi glyphicon-cog"></span> practice_test_take</a></li>
+                      <li><a href="{% url 'ppi-assessment:practice_test_result' %}"><span class="glyphicon glyphi glyphicon-cog"></span> practice_test_result</a></li>
+                      <li><a href="{% url 'ppi-assessment:check_results' %}"><span class="glyphicon glyphi glyphicon-cog"></span> check_results</a></li>
+                      </ul>
+                  </div>
+              </li>
+
+
+
+
+
+
+
+
+
               <li>
                 <a href="{% url 'ppi-auth:logout' %}?next=/"><span class="glyphicon glyphi glyphicon-log-out"></span> Logout</a>
               </li>

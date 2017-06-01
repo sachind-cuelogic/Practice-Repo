@@ -1,5 +1,6 @@
 from django.core.urlresolvers import reverse
 from django.core.mail import send_mail
+
 from django.conf import settings
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
@@ -17,19 +18,26 @@ from knowledgebase.views import validateurl
 
 @require_http_methods(["GET", "POST"])
 def registration(request):
+
     if request.method == 'POST':
         user_form = PPIUserRegistrationForm(request.POST)
+        print "user_form==>",user_form
         if user_form.is_valid():
             email = user_form.cleaned_data['email']
+            print "email===>",email
             activation_key = generate_activation_key(email)
+            print "activation key==>",activation_key
             key_expires = generate_expiry_timestamp()
-
+            print "key_expires==>",key_expires
             user = user_form.save(commit=False)
             user.activation_key = activation_key
+            print "active suer key===>",user.activation_key
             user.key_expires = key_expires
             user.set_password(user_form.cleaned_data['password'])
+            print "user pass==>",user.set_password(user_form.cleaned_data['password'])  
+            
             user.save()
-
+            print "user==>",user
             send_activation_link(activation_key, email, request)
 
             return redirect(reverse('ppi-auth:registration_success'))
@@ -73,10 +81,15 @@ def send_activation_link(activation_key, email, request):
             'ppi-auth:registration_confirm',
             kwargs={'activation_key': activation_key}
         )
+    print "url ==>",url
+
     email_subject = 'Account confirmation'
     email_body = "Hey, thanks for signing up.\n\
     To activate your account, click this link within \
     48 hours\n  http://%s%s" % (request.META['HTTP_HOST'], url)
+
+    print "email body===>",email_body
+
     send_mail(
         email_subject,
         email_body,
@@ -85,10 +98,12 @@ def send_activation_link(activation_key, email, request):
         fail_silently=False 
     )
 
+    print "send mail==>",send_mail
 
 def registration_confirm(request, activation_key):
     try:
         PPIUser.objects.get(activation_key=activation_key)
+        print "ppiuser activation key==>",PPIUser.objects.get(activation_key=activation_key)
         user = get_object_or_404(PPIUser, activation_key=activation_key)
         if request.user.is_authenticated():
             return render(request, 'ppiauth/confirm.html')
