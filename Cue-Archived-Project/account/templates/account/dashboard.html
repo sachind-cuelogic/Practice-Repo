@@ -1,0 +1,53 @@
+      <div class="row" id="row-menu">
+        <div class="col-lg-12">
+          <div id="menu">
+          <ul class="nav nav-sidebar nav-stacked" id="nav-start">
+              <li class="active"><a href="/"><span class="glyphicon glyphi glyphicon-home"></span> Dashboard</a></li>
+              <li id="notification-here"><a href="{% url 'ppi-knowledgebase:viewe_all_notifications' request.user.id %}"><span class="glyphicon glyphi glyphicon-bell"></span> Notifications <div class="notify_me notify-badage"></div></a></li>
+              <li id="collapsable_div1"><a href="#"><span class="glyphicon glyphi glyphicon-retweet"></span> Entries <sub class="glyphicon glyphi glyphicon-circle-arrow-down"></sub></a>
+                  <div id="nav-inner-start">
+                      <ul class="nav nav-sidebar nav-stacked">
+
+                      {% load knowledgebase_utils %}
+
+                      {% url_encode 'None' request.get_full_path as encoded_url %}
+
+                      <li><a href="{% url 'ppi-knowledgebase:question_answer_add' %}?param={{ encoded_url }}"><span class="glyphicon glyphi glyphicon-pencil"></span> Add New</a></li>
+                      <li><a href="{% url 'ppi-knowledgebase:question_draft_list' %}"><span class="glyphicon glyphi glyphicon-saved"></span> Drafts</a></li>
+                      <li><a href="{% url 'ppi-knowledgebase:question_submit_list' %}"><span class="glyphicon glyphi glyphicon-eye-open"></span> Submited</a></li>
+                      <li><a href="{% url 'ppi-knowledgebase:question_publish_list' %}"><span class="glyphicon glyphi glyphicon-ok"></span> Published</a></li>
+                      </ul>
+                  </div>
+              </li>
+              {% load knowledgebase_utils %} {% can_publish user.userprofile.user_type as can_published %}
+              {% if can_published %}
+
+              <li><a href="{% url 'ppi-knowledgebase:question_review' %}"><span class="glyphicon glyphi glyphicon-transfer"></span> Review Question</a></li>
+
+              {% endif %}
+              {% load account_utils %}
+
+              {% get_user_hash request.user as hashed_email %}
+              <li id="collapsable_div"><a href="#"><span class="glyphicon glyphi glyphicon-retweet"></span> Profile <sub class="glyphicon glyphi glyphicon-circle-arrow-down"></sub></a>
+                  <div id="nav-inner-start">
+                      <ul class="nav nav-sidebar nav-stacked">
+
+                      {% load knowledgebase_utils %}
+
+                      {% url_encode 'None' request.get_full_path as encoded_url %}
+
+                      <li><a href="{% url 'ppi-accounts:profile_view' hashed_email %}"><span class="glyphicon glyphi glyphicon-user"></span> View Profile</a></li>
+                      <li><a href="{% url 'ppi-accounts:profile_edit' %}"><span class="glyphicon glyphi glyphicon-cog"></span> Edit Profile</a></li>
+                      <li><a href="{% url 'ppi-auth:password_change' %}"><span class="glyphicon glyphi glyphicon-edit"></span> Change Password</a></li>
+                      </ul>
+                  </div>
+              </li>
+
+              <li><a href="#"><span class="glyphicon glyphi glyphicon-hourglass"></span> Assement</a></li>
+              <li>
+                <a href="{% url 'ppi-auth:logout' %}?next=/"><span class="glyphicon glyphi glyphicon-log-out"></span> Logout</a>
+              </li>
+          </ul>
+          </div>
+        </div>
+      </div>

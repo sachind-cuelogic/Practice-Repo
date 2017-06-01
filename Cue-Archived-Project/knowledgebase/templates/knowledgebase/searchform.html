@@ -1,0 +1,14 @@
+<div class="col-md-4 question_search">
+  <form method="POST" action="{{request.path}}">
+    {%csrf_token%}
+    <div class="col-sm-8 col-searchform">
+      <input type="search" id="query" name="query"
+        class="form-control" value="{{search}}" 
+        placeholder="Search"/>
+    </div>
+    <div class="col-sm-4 col-searchform">
+      <button type="submit" class="btn btn-default">Search</button>
+    </div>
+    <br><br>
+  </form>
+</div>

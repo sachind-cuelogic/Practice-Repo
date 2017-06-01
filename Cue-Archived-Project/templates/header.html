@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<header>
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".menu2">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="{% url 'core_index' %}">PRE-PAIR IT</a>
+      </div>
+
+      <div class="collapse navbar-collapse navbar-right">
+        {% block header_extend %}{% endblock %}
+      </div>
+    </div>
+  </nav>
+
+  {% block header_errors %}{% endblock %}
+</header>

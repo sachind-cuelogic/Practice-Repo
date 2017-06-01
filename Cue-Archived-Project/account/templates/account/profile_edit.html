@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block stylesheets_extend %}
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+{% endblock stylesheets_extend %}
+
+{% block content %}
+
+  {% if complete_message %}
+    <div class="container" id="deletesuccess">
+      <center>
+        <div class="alert alert-danger">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          {{ complete_message }}
+        </div>
+      </center>
+    </div>
+  {% endif %}
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-0 col-sm-offset-0 col-md-0 col-md-offset-0 main">
+        <div>
+          <div class ="container" style="width: 500px">
+            <form class= "form-inline" role= "form"  id="user_form" method="post" action=""
+              enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class = "form-group">
+                <label for="email">Username/ Email:</label>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
+                  {{ user_form.email }}
+                </div>
+              </div>
+              <br/>
+              <div class ="form-group">
+                <label for = "first_name">First Name: </label>
+                {{ user_profile_form.first_name }}
+              </div>
+              <div class = "form-group">
+                <label for = "last_name">Last Name: </label>
+                {{ user_profile_form.last_name }}
+              </div>
+              <div class="form-group">
+                <label for="type">Type: </label>
+                {{ user_profile_form.user_type }}
+              </div>
+              <div class ="form-group">
+                <label for = "designation">Designation: </label>
+                {{ user_profile_form.designation }}
+              </div>
+              <div class="form-group">
+                <label for="gender">Gender: </label>
+                {{ user_profile_form.gender }}
+              </div>
+              <div class ="form-group">
+                <label for = "about">About: </label>
+                {{ user_profile_form.about }}
+              </div>
+              <div class ="form-group">
+                <label for = "dob">Date of Birth </label>
+                {{ user_profile_form.dob }}
+              </div>
+              <div class ="form-group">
+                <label for = "password">Profile Picture </label>
+                <br />
+                {% if user.userprofile.profile_picture %}
+                  <img src="{{ user_profile.profile_picture.url }}" alt="profile_picture" style="width:90px;height:90px">
+                {% else %}
+                  <img src="{% static "images/userprofile.jpg" %}" alt="profile_picture" style="width:90px;height:90px">
+                {% endif %}
+                <br/>
+                <div class="input-group">
+                  <input type="file" name="profile_picture" class="" style="width:490px; z-index : 0;">
+                </div>
+              </div>
+              <br /><br />
+              <div style="text-align: center;">
+                <button id = "register" type="submit" class="btn btn-success">Update profile</button>
+                <button id = "reset" type="reset" class="btn btn-primary">Reset</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style type="text/css">
+    fieldset { 
+    overflow: hidden; 
+    margin-bottom: 5px;
+    display: inline-block;
+    width: 270px;
+    }
+    label { float: left; width: 150px; }
+    input { width: 220px;
+    margin-bottom: 10px;
+    }
+    textarea { width: 120px;
+    margin-bottom: 10px;
+    }
+    select { width: 120px;
+    margin-bottom: 10px;
+    }
+    .input-group{
+    margin-bottom: 10px;
+    }
+    .form-inline .form-control {
+    width:300px;
+    }
+    .form-inline .input-group .form-control {
+    width:260px;
+    }
+    textarea.form-control {
+    height: 100px;
+    }
+  </style>
+{% endblock content %}
+
+{% block scripts_extend %}
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script type='text/javascript'>
+  $(function() {
+    $( "#id_dob" ).datepicker();
+  });
+</script>
+<script type="text/javascript"> 
+  $('input[type="text"]').addClass('form-control');
+  $('select').addClass('form-control');
+  $('textarea').addClass('form-control');
+  $('input[type="file"]').addClass('form-control');
+  $(function() {
+      $('#deletesuccess').delay(5000).fadeOut();
+});
+</script>
+</script>
+{% endblock scripts_extend %}

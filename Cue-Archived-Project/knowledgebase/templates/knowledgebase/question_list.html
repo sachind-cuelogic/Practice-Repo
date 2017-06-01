@@ -1,0 +1,108 @@
+{% extends 'base.html' %} {% load staticfiles %} {% block content %}
+<br/>
+<div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h3>Your Question Answers</h3>
+      </div>
+      {% include 'knowledgebase/searchform.html'%}
+    </div>
+    {% load knowledgebase_utils %}
+       {% url_encode questionanswer.id request.get_full_path as encoded_url %}
+    <ul id="nav" class="nav nav-tabs">
+        <li {% if active_tab == 'all'%} class="active"{% endif%}><a id="all" data-toggle="tab" href="{% url 'ppi-knowledgebase:question_list' %}">All</a></li>
+        <li {% if active_tab == 'draft'%} class="active"{% endif%}><a id="review" data-toggle="tab" href="{% url 'ppi-knowledgebase:question_draft_list' %}">Draft</a></li>
+        <li {% if active_tab == 'submit'%} class="active"{% endif%}><a id="review" data-toggle="tab" href="{% url 'ppi-knowledgebase:question_submit_list' %}">Submited</a></li>
+        <li {% if active_tab == 'publish'%} class="active"{% endif%}><a id="published" data-toggle="tab" href="{% url 'ppi-knowledgebase:question_publish_list' %}">Published</a></li>
+    </ul>
+    <div class="row">
+        {% if questionsanswer_list %} {% for questionanswer in questionsanswer_list %}
+        <div class="row">
+            <div class="media-body ">
+                <small class="pull-right">
+       {% url_encode questionanswer.id request.get_full_path as encoded_url %}
+      {% load account_utils %}
+      {% get_user_hash request.user as hashed_email %}
+      <a href="{% url 'ppi-knowledgebase:question_answer_add' %}?param={{encoded_url}}" class="btn btn-xs btn-success"><i class="fa fa-external-link-square"></i> Edit</a>
+      </small><span class="glyphicon glyphicon-question-sign"></span>
+                <strong>{% autoescape off %}{{ questionanswer.question }}{% endautoescape %}</strong> posted question in <strong>
+
+          {% for category in questionanswer.categories.all %}
+            {% if forloop.last %}
+                {{ category.name }}
+            {% else %}
+                {{ category.name }},
+            {% endif %}
+          {% endfor %}
+
+      </strong> category
+                <br>{{ questionanswer.date_added.date }} {{ questionanswer.date_added.time|time:"g:iA"}} |
+                <small class="text-muted"><strong> Under Topics</strong>
+          {% for topic in questionanswer.topics.all %}
+            {% if forloop.last %}
+                {{ topic.name }}
+            {% else %}
+                {{ topic.name }},
+            {% endif %}
+          {% endfor %}
+
+        <span class="background-change">
+        {% ifequal questionanswer.get_state_display 'DRAFT' %} <strong>DRAFT</strong> {% endifequal %}
+        {% ifequal questionanswer.get_state_display 'SUBMIT' %} <strong>SUBMITED</strong> {% endifequal %}
+        {% ifequal questionanswer.get_state_display 'PUBLISH' %} <strong>PUBLISHED</strong> {% endifequal %}
+        </span>
+      </small>
+      <div class="well" style="margin-left: 35px;">
+        <span class="glyphicon glyphicon-text-background">  </span>
+        {% autoescape off %}{{ questionanswer.answer }}{% endautoescape %}
+      </div>
+    </div>
+    <hr/>
+    {% endfor %}
+    {% else %}
+        <h4>No Questions to display</h4>
+    {% endif %}
+  </div>
+</div>
+
+{% load knowledgebase_utils %}
+            {% if questionsanswer_list.paginator %}
+            <div class="row">
+                <center>
+                    <div class="span8 offset3">
+                        <div class="pagination">
+                            <ul class="pager">
+                                {% get_hash search as decoded%}
+                                <li>{% if questionsanswer_list.has_previous %}
+                                    <a href="?query={{decoded}}&amp;page={{ questionsanswer_list.previous_page_number }}">previous</a> {% endif %}
+                                </li>
+                                <li>
+                                    <ul class="pagination">
+                                        {% get_page_list questionsanswer_list.paginator.page_range questionsanswer_list.number as page_list%}
+                                        {% for p in page_list %}
+                                        <li {% ifequal p questionsanswer_list.number %} class="active" {% endifequal %}>
+                                            <a href="?query={{decoded}}&amp;page={{p}}">{{p}} </a>
+                                        </li>
+                                        {% empty %}
+                                        <li class="active">
+                                            <a href="?query={{decoded}}&amp;page=1" class="selected">1</a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                                <li>
+                                    {% get_hash search as decoded%}
+                                    {% if questionsanswer_list.has_next %}
+                                    <a href="?query={{decoded}}&page={{ questionsanswer_list.next_page_number }}">next</a> {% endif %}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </center>
+            </div>
+            {% endif %}
+
+ {% endblock content %}
+ {% block scripts_extend %}
+<script type="text/javascript" src="{% static 'js/knowledgebase-que-ans-pub.js'%}"></script>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container">
+  <div class="pro-content no-padding border-left-right">
+    <div class="col-sm-0 col-sm-offset-0 col-md-0 col-md-offset-0 main">
+      <h2><strong>Questions and Answers</strong>
+        <br /> 
+      </h2>
+      <br/>
+      {% if question_detail %}
+    </div>
+    <div class="row">
+      <div class="media-body ">
+        <span class="glyphicon glyphicon-question-sign"></span>
+        <strong>{{ question_detail.question }}</strong> posted question in <strong>
+        {% for category in question_detail.categories.all %}
+        {{ category }}
+        {% endfor %}
+        </strong>
+        <div class="pull-right">
+          Posted by: <strong> {{ question_detail.user }} </strong>
+        </div>
+        <br>
+        <small class="text-muted">Under topics</small>
+        <strong>
+        {% for topic in question_detail.topics.all %}
+        {{ topic }}
+        {% endfor %}
+        </strong>
+        <div class="pull-right">
+          Posted On: <strong> {{ question_detail.date_added }} </strong>
+        </div>
+        <div class="question-answer-well">
+        <div class="well">
+          <span class="glyphicon glyphicon-text-background">  </span>
+          {{ question_detail.answer }}
+        </div>
+        </div>
+      </div>
+    </div>
+    <div id="que-ans-{{question_detail.id}}" class="pull-right">
+      {% if question_detail.get_state_display == "SUBMIT" %}
+      <div class="display-button" id="publish-{{question_detail.id}}">
+        <input type="submit" class="btn btn-success btn-xs " value="Publish" id="{{question_detail.id}}">
+      </div>
+      <div class="display-button" id="reject-{{question_detail.id}}">
+        <input type="submit" class="btn btn-danger btn-xs " value ="Reject" id="{{question_detail.id}}">
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  <hr/>
+  {% else %}
+  <h4>There are no Questions to display</h4>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block scripts_extend %}
+<script type="text/javascript" src="{% static 'js/knowledgebase-que-ans-pub.js'%}"></script>
+{% endblock %}

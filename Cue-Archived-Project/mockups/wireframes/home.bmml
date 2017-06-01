@@ -1,0 +1,779 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1159" measuredH="2451" mockupW="1024" mockupH="2435">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="135" y="16" w="1024" h="2435" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <text>Home</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Canvas" x="137" y="89" w="1019" h="84" measuredW="100" measuredH="70" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>10066329</borderColor>
+        <color>10066329</color>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Label" x="170" y="116" w="144" h="-1" measuredW="140" measuredH="32" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <color>16777215</color>
+        <size>24</size>
+        <text>PRE-PAIR%20IT</text>
+      </controlProperties>
+    </control>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Label" x="785" y="97" w="-1" h="-1" measuredW="30" measuredH="20" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>16777215</color>
+        <size>12</size>
+        <text>Email</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::Label" x="932" y="97" w="-1" h="-1" measuredW="52" measuredH="20" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>16777215</color>
+        <size>12</size>
+        <text>Password</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::Button" x="1074" y="117" w="-1" h="-1" measuredW="54" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>3355443</color>
+        <text>Login</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="com.balsamiq.mockups::Label" x="932" y="147" w="-1" h="-1" measuredW="103" measuredH="18" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13421772</color>
+        <size>10</size>
+        <text>Forgot%20your%20password%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::TextInput" x="785" y="118" w="117" h="-1" measuredW="79" measuredH="26" zOrder="9" locked="false" isInGroup="-1"/>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::CheckBox" x="785" y="145" w="109" h="22" measuredW="104" measuredH="19" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>14540253</color>
+        <size>10</size>
+        <text>Keep%20me%20logged%20in</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::TextInput" x="932" y="118" w="117" h="-1" measuredW="79" measuredH="26" zOrder="11" locked="false" isInGroup="-1"/>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::Paragraph" x="212" y="225" w="378" h="138" measuredW="275" measuredH="80" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>*Pre-Pair%20It*%20is%20a%20knowledge%20base%20aggregation%20system.%0A%20%0ABrowse%20through%20the%20various%20categories%20and%20stay%20up%20to%20date%20on%20the%20latest%20concepts%20and%20information%20through%20a%20simple%20Q%20%26%20A%20system.%0A%20%0ASubmit%20your%20own%20Question%20/%20Answer%20pairs%2C%20suggest%20new%20categories%20and%20topics%2C%20suggest%20corrections%20and%20updates%20to%20the%20answers%20to%20questions.</text>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::Button" x="357" y="386" w="-1" h="-1" measuredW="89" measuredH="27" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>3355443</color>
+        <text>Take%20a%20tour</text>
+      </controlProperties>
+    </control>
+    <control controlID="20" controlTypeID="com.balsamiq.mockups::Canvas" x="138" y="172" w="1019" h="296" measuredW="100" measuredH="70" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>14540253</borderColor>
+        <color>14540253</color>
+      </controlProperties>
+    </control>
+    <control controlID="21" controlTypeID="com.balsamiq.mockups::Canvas" x="167" y="201" w="464" h="238" measuredW="100" measuredH="70" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>16777215</borderColor>
+        <borderStyle>roundedSolid</borderStyle>
+        <color>16777215</color>
+      </controlProperties>
+    </control>
+    <control controlID="22" controlTypeID="com.balsamiq.mockups::Canvas" x="166" y="498" w="960" h="1265" measuredW="100" measuredH="70" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>14540253</borderColor>
+        <borderStyle>roundedSolid</borderStyle>
+        <color>14540253</color>
+      </controlProperties>
+    </control>
+    <control controlID="23" controlTypeID="com.balsamiq.mockups::Label" x="200" y="526" w="222" h="-1" measuredW="220" measuredH="32" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <color>0</color>
+        <size>24</size>
+        <text>KNOWLEDGE%20BASE</text>
+      </controlProperties>
+    </control>
+    <control controlID="24" controlTypeID="com.balsamiq.mockups::SearchBox" x="850" y="530" w="224" h="-1" measuredW="120" measuredH="25" zOrder="16" locked="false" isInGroup="-1"/>
+    <control controlID="26" controlTypeID="com.balsamiq.mockups::Canvas" x="198" y="623" w="874" h="340" measuredW="100" measuredH="70" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>1</backgroundAlpha>
+        <borderColor>16777215</borderColor>
+        <borderStyle>roundedSolid</borderStyle>
+        <color>16777215</color>
+      </controlProperties>
+    </control>
+    <control controlID="27" controlTypeID="com.balsamiq.mockups::Label" x="227" y="585" w="60" h="-1" measuredW="59" measuredH="22" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <color>0</color>
+        <size>14</size>
+        <text>Category</text>
+      </controlProperties>
+    </control>
+    <control controlID="28" controlTypeID="com.balsamiq.mockups::Label" x="517" y="585" w="93" h="-1" measuredW="87" measuredH="22" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <color>0</color>
+        <size>14</size>
+        <text>Latest%20Topics</text>
+      </controlProperties>
+    </control>
+    <control controlID="29" controlTypeID="com.balsamiq.mockups::Label" x="785" y="585" w="90" h="-1" measuredW="91" measuredH="22" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <color>0</color>
+        <size>14</size>
+        <text>Latest%20Entries</text>
+      </controlProperties>
+    </control>
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::Label" x="227" y="642" w="75" h="-1" measuredW="66" measuredH="28" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>0</color>
+        <size>20</size>
+        <text>Python</text>
+      </controlProperties>
+    </control>
+    <control controlID="31" controlTypeID="com.balsamiq.mockups::Label" x="300" y="646" w="70" h="-1" measuredW="63" measuredH="20" zOrder="22" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <color>0</color>
+        <size>12</size>
+        <text>%2825%20Topics%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="32" controlTypeID="com.balsamiq.mockups::Paragraph" x="227" y="685" w="275" h="53" measuredW="275" measuredH="80" zOrder="23" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Python%20is%20a%20programming%20language%20that%20lets%20you%20work%20more%20quickly%20and%20integrate%20your%20systems%20more%20effectively.</text>
+      </controlProperties>
+    </control>
+    <control controlID="33" controlTypeID="com.balsamiq.mockups::Label" x="517" y="663" w="60" h="-1" measuredW="48" measuredH="22" zOrder="25" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>0</color>
+        <size>14</size>
+        <text>Strings</text>
+      </controlProperties>
+    </control>
+    <control controlID="34" controlTypeID="com.balsamiq.mockups::Label" x="517" y="690" w="60" h="-1" measuredW="59" measuredH="22" zOrder="26" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>0</color>
+        <size>14</size>
+        <text>Iterators</text>
+      </controlProperties>
+    </control>
+    <control controlID="35" controlTypeID="com.balsamiq.mockups::Label" x="517" y="716" w="-1" h="-1" measuredW="74" measuredH="22" zOrder="27" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>0</color>
+        <size>14</size>
+        <text>Decorators</text>
+      </controlProperties>
+    </control>
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::Label" x="517" y="743" w="-1" h="-1" measuredW="151" measuredH="22" zOrder="28" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>0</color>
+        <size>14</size>
+        <text>Packages%20and%20Modules</text>
+      </controlProperties>
+    </control>
+    <control controlID="38" controlTypeID="com.balsamiq.mockups::Paragraph" x="785" y="670" w="99" h="15" measuredW="275" measuredH="80" zOrder="29" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>472931</color>
+        <size>11</size>
+        <text>What%20are%20iterators%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="39" controlTypeID="com.balsamiq.mockups::Label" x="890" y="664" w="46" h="-1" measuredW="38" measuredH="20" zOrder="30" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <color>6710886</color>
+        <size>12</size>
+        <text>Apr%20%2715</text>
+      </controlProperties>
+    </control>
+    <control controlID="40" controlTypeID="com.balsamiq.mockups::Paragraph" x="785" y="690" w="140" h="15" measuredW="275" measuredH="80" zOrder="31" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>472931</color>
+        <size>11</size>
+        <text>What%20is%20the%20__init__.py%20file%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="41" controlTypeID="com.balsamiq.mockups::Label" x="925" y="684" w="46" h="-1" measuredW="38" measuredH="20" zOrder="32" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <color>6710886</color>
+        <size>12</size>
+        <text>Apr%20%2715</text>
+      </controlProperties>
+    </control>
+    <control controlID="42" controlTypeID="com.balsamiq.mockups::Paragraph" x="785" y="710" w="241" h="28" measuredW="275" measuredH="80" zOrder="33" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>472931</color>
+        <size>11</size>
+        <text>What%20is%20the%20difference%20between%20a%20package%20and%20a%20module%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="43" controlTypeID="com.balsamiq.mockups::Label" x="850" y="717" w="46" h="-1" measuredW="38" measuredH="20" zOrder="34" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <color>6710886</color>
+        <size>12</size>
+        <text>Apr%20%2715</text>
+      </controlProperties>
+    </control>
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::Paragraph" x="785" y="743" w="223" h="27" measuredW="275" measuredH="80" zOrder="35" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>472931</color>
+        <size>11</size>
+        <text>Explain%20a%20scenario%20where%20decorators%20can%20be%20used</text>
+      </controlProperties>
+    </control>
+    <control controlID="45" controlTypeID="com.balsamiq.mockups::Label" x="826" y="751" w="46" h="-1" measuredW="38" measuredH="20" zOrder="36" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <color>6710886</color>
+        <size>12</size>
+        <text>Apr%20%2715</text>
+      </controlProperties>
+    </control>
+    <control controlID="46" controlTypeID="com.balsamiq.mockups::Paragraph" x="785" y="777" w="124" h="15" measuredW="275" measuredH="80" zOrder="37" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>472931</color>
+        <size>11</size>
+        <text>What%20are%20metaclasses%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="47" controlTypeID="com.balsamiq.mockups::Label" x="911" y="771" w="46" h="-1" measuredW="38" measuredH="20" zOrder="38" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <color>6710886</color>
+        <size>12</size>
+        <text>Apr%20%2715</text>
+      </controlProperties>
+    </control>
+    <control controlID="48" controlTypeID="com.balsamiq.mockups::Label" x="227" y="856" w="75" h="-1" measuredW="67" measuredH="26" zOrder="39" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <color>0</color>
+        <size>18</size>
+        <text>Mentors</text>
+      </controlProperties>
+    </control>
+    <control controlID="57" controlTypeID="com.balsamiq.mockups::Image" x="462" y="816" w="90" h="90" measuredW="93" measuredH="93" zOrder="43" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/mentor-onkar-tibe.png</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="58" controlTypeID="com.balsamiq.mockups::Image" x="329" y="816" w="90" h="90" measuredW="93" measuredH="89" zOrder="40" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/mentor-prashant-gurav.png</src>
+      </controlProperties>
+    </control>
+    <control controlID="59" controlTypeID="com.balsamiq.mockups::Label" x="331" y="905" w="-1" h="-1" measuredW="88" measuredH="20" zOrder="41" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>0</color>
+        <size>12</size>
+        <text>Prashant%20Gurav</text>
+      </controlProperties>
+    </control>
+    <control controlID="60" controlTypeID="com.balsamiq.mockups::Label" x="336" y="921" w="-1" h="-1" measuredW="79" measuredH="19" zOrder="42" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>6710886</color>
+        <italic>true</italic>
+        <size>11</size>
+        <text>Technical%20Laad</text>
+      </controlProperties>
+    </control>
+    <control controlID="61" controlTypeID="com.balsamiq.mockups::Label" x="476" y="906" w="-1" h="-1" measuredW="64" measuredH="20" zOrder="44" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>0</color>
+        <size>12</size>
+        <text>Onkar%20Tibe</text>
+      </controlProperties>
+    </control>
+    <control controlID="62" controlTypeID="com.balsamiq.mockups::Label" x="464" y="922" w="-1" h="-1" measuredW="89" measuredH="19" zOrder="45" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>6710886</color>
+        <italic>true</italic>
+        <size>11</size>
+        <text>Project%20Manager</text>
+      </controlProperties>
+    </control>
+    <control controlID="63" controlTypeID="com.balsamiq.mockups::Image" x="596" y="814" w="90" h="90" measuredW="93" measuredH="93" zOrder="46" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/mentor-sagar-tambe.png</src>
+      </controlProperties>
+    </control>
+    <control controlID="64" controlTypeID="com.balsamiq.mockups::Label" x="600" y="906" w="-1" h="-1" measuredW="76" measuredH="20" zOrder="47" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>0</color>
+        <size>12</size>
+        <text>Sagar%20Tambe</text>
+      </controlProperties>
+    </control>
+    <control controlID="65" controlTypeID="com.balsamiq.mockups::Label" x="614" y="922" w="-1" h="-1" measuredW="49" measuredH="19" zOrder="48" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>6710886</color>
+        <italic>true</italic>
+        <size>11</size>
+        <text>Architect</text>
+      </controlProperties>
+    </control>
+    <control controlID="66" controlTypeID="com.balsamiq.mockups::Canvas" x="663" y="201" w="464" h="238" measuredW="100" measuredH="70" zOrder="24" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>16777215</borderColor>
+        <borderStyle>roundedSolid</borderStyle>
+        <color>16777215</color>
+      </controlProperties>
+    </control>
+    <control controlID="67" controlTypeID="com.balsamiq.mockups::Paragraph" x="708" y="225" w="378" h="138" measuredW="275" measuredH="80" zOrder="50" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>*Pre-Pair%20It*%20is%20a%20mentoring%20system.%0A%20%0AEach%20category%20has%20assigned%20mentors.%20The%20mentors%20publish%20topics%20with%20questions%20and%20answers.%0A%20%0AChoose%20a%20category%20and%20get%20paired%20with%20a%20mentor.%20Get%20guidance%20from%20the%20mentor%2C%20learn%20a%20technology%20by%20reading%20and%20practising%20the%20assignments%2C%20take%20tests%20and%20get%20assessed.</text>
+      </controlProperties>
+    </control>
+    <control controlID="68" controlTypeID="com.balsamiq.mockups::Button" x="853" y="386" w="-1" h="-1" measuredW="89" measuredH="27" zOrder="51" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>3355443</color>
+        <text>Take%20a%20tour</text>
+      </controlProperties>
+    </control>
+    <control controlID="71" controlTypeID="com.balsamiq.mockups::RoundButton" x="450" y="958" w="356" h="48" measuredW="32" measuredH="32" zOrder="49" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>16777215</borderColor>
+        <shape>roundRect</shape>
+        <shapeRotation>180</shapeRotation>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="74" controlTypeID="com.balsamiq.mockups::Link" x="593" y="971" w="-1" h="-1" measuredW="43" measuredH="22" zOrder="52" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>VIEW</text>
+      </controlProperties>
+    </control>
+    <control controlID="77" controlTypeID="com.balsamiq.mockups::HRule" x="449" y="959" w="357" h="-1" measuredW="100" measuredH="10" zOrder="53" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13421772</color>
+      </controlProperties>
+    </control>
+    <control controlID="173" controlTypeID="com.balsamiq.mockups::Canvas" x="200" y="1043" w="874" h="340" measuredW="100" measuredH="70" zOrder="54" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>1</backgroundAlpha>
+        <borderColor>16777215</borderColor>
+        <borderStyle>roundedSolid</borderStyle>
+        <color>16777215</color>
+      </controlProperties>
+    </control>
+    <control controlID="174" controlTypeID="com.balsamiq.mockups::Label" x="236" y="1067" w="75" h="-1" measuredW="47" measuredH="28" zOrder="55" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>0</color>
+        <size>20</size>
+        <text>Ruby</text>
+      </controlProperties>
+    </control>
+    <control controlID="175" controlTypeID="com.balsamiq.mockups::Label" x="293" y="1071" w="70" h="-1" measuredW="63" measuredH="20" zOrder="56" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <color>0</color>
+        <size>12</size>
+        <text>%2830%20Topics%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="176" controlTypeID="com.balsamiq.mockups::Paragraph" x="236" y="1110" w="275" h="66" measuredW="275" measuredH="80" zOrder="57" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>A%20dynamic%2C%20open%20source%20programming%20language%20with%20a%20focus%20on%20simplicity%20and%20productivity.%20It%20has%20an%20elegant%20syntax%20that%20is%20natural%20to%20read%20and%20easy%20to%20write.</text>
+      </controlProperties>
+    </control>
+    <control controlID="177" controlTypeID="com.balsamiq.mockups::Label" x="526" y="1088" w="-1" h="-1" measuredW="73" measuredH="22" zOrder="58" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>0</color>
+        <size>14</size>
+        <text>Containers</text>
+      </controlProperties>
+    </control>
+    <control controlID="178" controlTypeID="com.balsamiq.mockups::Label" x="526" y="1115" w="-1" h="-1" measuredW="48" measuredH="22" zOrder="59" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>0</color>
+        <size>14</size>
+        <text>Strings</text>
+      </controlProperties>
+    </control>
+    <control controlID="179" controlTypeID="com.balsamiq.mockups::Label" x="526" y="1141" w="-1" h="-1" measuredW="50" measuredH="22" zOrder="60" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>0</color>
+        <size>14</size>
+        <text>File%20I/O</text>
+      </controlProperties>
+    </control>
+    <control controlID="180" controlTypeID="com.balsamiq.mockups::Label" x="526" y="1168" w="-1" h="-1" measuredW="80" measuredH="22" zOrder="61" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>0</color>
+        <size>14</size>
+        <text>Subroutines</text>
+      </controlProperties>
+    </control>
+    <control controlID="181" controlTypeID="com.balsamiq.mockups::Paragraph" x="794" y="1095" w="186" h="15" measuredW="275" measuredH="80" zOrder="62" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>472931</color>
+        <size>11</size>
+        <text>Explain%20how%20everything%20is%20an%20object</text>
+      </controlProperties>
+    </control>
+    <control controlID="182" controlTypeID="com.balsamiq.mockups::Label" x="980" y="1089" w="46" h="-1" measuredW="38" measuredH="20" zOrder="63" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <color>6710886</color>
+        <size>12</size>
+        <text>Apr%20%2715</text>
+      </controlProperties>
+    </control>
+    <control controlID="183" controlTypeID="com.balsamiq.mockups::Paragraph" x="794" y="1115" w="140" h="15" measuredW="275" measuredH="80" zOrder="64" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>472931</color>
+        <size>11</size>
+        <text>What%20are%20Gems%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="184" controlTypeID="com.balsamiq.mockups::Label" x="896" y="1109" w="46" h="-1" measuredW="38" measuredH="20" zOrder="65" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <color>6710886</color>
+        <size>12</size>
+        <text>Apr%20%2715</text>
+      </controlProperties>
+    </control>
+    <control controlID="185" controlTypeID="com.balsamiq.mockups::Paragraph" x="794" y="1135" w="241" h="28" measuredW="275" measuredH="80" zOrder="66" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>472931</color>
+        <size>11</size>
+        <text>What%20is%20the%20difference%20between%20a%20class%20and%20a%20module%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="186" controlTypeID="com.balsamiq.mockups::Label" x="851" y="1142" w="46" h="-1" measuredW="38" measuredH="20" zOrder="67" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <color>6710886</color>
+        <size>12</size>
+        <text>Apr%20%2715</text>
+      </controlProperties>
+    </control>
+    <control controlID="187" controlTypeID="com.balsamiq.mockups::Paragraph" x="794" y="1168" w="223" h="15" measuredW="275" measuredH="80" zOrder="68" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>472931</color>
+        <size>11</size>
+        <text>Explain%20some%20of%20the%20looping%20structures</text>
+      </controlProperties>
+    </control>
+    <control controlID="188" controlTypeID="com.balsamiq.mockups::Label" x="995" y="1163" w="46" h="-1" measuredW="38" measuredH="20" zOrder="69" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <color>6710886</color>
+        <size>12</size>
+        <text>Apr%20%2715</text>
+      </controlProperties>
+    </control>
+    <control controlID="189" controlTypeID="com.balsamiq.mockups::Paragraph" x="794" y="1186" w="201" h="15" measuredW="275" measuredH="80" zOrder="70" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>472931</color>
+        <size>11</size>
+        <text>How%20does%20a%20symbol%20differ%20from%20a%20string%3F</text>
+      </controlProperties>
+    </control>
+    <control controlID="190" controlTypeID="com.balsamiq.mockups::Label" x="999" y="1181" w="46" h="-1" measuredW="38" measuredH="20" zOrder="71" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <color>6710886</color>
+        <size>12</size>
+        <text>Apr%20%2715</text>
+      </controlProperties>
+    </control>
+    <control controlID="191" controlTypeID="com.balsamiq.mockups::Label" x="236" y="1281" w="75" h="-1" measuredW="67" measuredH="26" zOrder="72" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <color>0</color>
+        <size>18</size>
+        <text>Mentors</text>
+      </controlProperties>
+    </control>
+    <control controlID="192" controlTypeID="com.balsamiq.mockups::Image" x="338" y="1241" w="90" h="90" measuredW="93" measuredH="89" zOrder="73" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/mentor-prashant-gurav.png</src>
+      </controlProperties>
+    </control>
+    <control controlID="193" controlTypeID="com.balsamiq.mockups::Label" x="340" y="1330" w="-1" h="-1" measuredW="88" measuredH="20" zOrder="74" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>0</color>
+        <size>12</size>
+        <text>Prashant%20Gurav</text>
+      </controlProperties>
+    </control>
+    <control controlID="194" controlTypeID="com.balsamiq.mockups::Label" x="345" y="1346" w="-1" h="-1" measuredW="79" measuredH="19" zOrder="75" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>6710886</color>
+        <italic>true</italic>
+        <size>11</size>
+        <text>Technical%20Laad</text>
+      </controlProperties>
+    </control>
+    <control controlID="195" controlTypeID="com.balsamiq.mockups::Image" x="471" y="1241" w="90" h="90" measuredW="93" measuredH="93" zOrder="76" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/mentor-onkar-tibe.png</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="196" controlTypeID="com.balsamiq.mockups::Label" x="485" y="1331" w="-1" h="-1" measuredW="64" measuredH="20" zOrder="77" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>0</color>
+        <size>12</size>
+        <text>Onkar%20Tibe</text>
+      </controlProperties>
+    </control>
+    <control controlID="197" controlTypeID="com.balsamiq.mockups::Label" x="473" y="1347" w="-1" h="-1" measuredW="89" measuredH="19" zOrder="78" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>6710886</color>
+        <italic>true</italic>
+        <size>11</size>
+        <text>Project%20Manager</text>
+      </controlProperties>
+    </control>
+    <control controlID="198" controlTypeID="com.balsamiq.mockups::Image" x="605" y="1239" w="90" h="90" measuredW="93" measuredH="93" zOrder="79" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/mentor-sagar-tambe.png</src>
+      </controlProperties>
+    </control>
+    <control controlID="199" controlTypeID="com.balsamiq.mockups::Label" x="609" y="1331" w="-1" h="-1" measuredW="76" measuredH="20" zOrder="80" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>0</color>
+        <size>12</size>
+        <text>Sagar%20Tambe</text>
+      </controlProperties>
+    </control>
+    <control controlID="200" controlTypeID="com.balsamiq.mockups::Label" x="623" y="1347" w="-1" h="-1" measuredW="49" measuredH="19" zOrder="81" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>6710886</color>
+        <italic>true</italic>
+        <size>11</size>
+        <text>Architect</text>
+      </controlProperties>
+    </control>
+    <control controlID="201" controlTypeID="com.balsamiq.mockups::RoundButton" x="459" y="1378" w="356" h="48" measuredW="32" measuredH="32" zOrder="82" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>16777215</borderColor>
+        <shape>roundRect</shape>
+        <shapeRotation>180</shapeRotation>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="202" controlTypeID="com.balsamiq.mockups::Link" x="602" y="1396" w="-1" h="-1" measuredW="43" measuredH="22" zOrder="83" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>VIEW</text>
+      </controlProperties>
+    </control>
+    <control controlID="203" controlTypeID="com.balsamiq.mockups::HRule" x="458" y="1379" w="357" h="-1" measuredW="100" measuredH="10" zOrder="84" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13421772</color>
+      </controlProperties>
+    </control>
+    <control controlID="204" controlTypeID="com.balsamiq.mockups::Canvas" x="200" y="1469" w="274" h="200" measuredW="100" measuredH="70" zOrder="85" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>1</backgroundAlpha>
+        <borderColor>16777215</borderColor>
+        <borderStyle>roundedSolid</borderStyle>
+        <color>16777215</color>
+      </controlProperties>
+    </control>
+    <control controlID="205" controlTypeID="com.balsamiq.mockups::Label" x="236" y="1493" w="-1" h="-1" measuredW="99" measuredH="28" zOrder="86" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>0</color>
+        <size>20</size>
+        <text>Javascript</text>
+      </controlProperties>
+    </control>
+    <control controlID="206" controlTypeID="com.balsamiq.mockups::Label" x="345" y="1497" w="70" h="-1" measuredW="60" measuredH="20" zOrder="87" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <color>0</color>
+        <size>12</size>
+        <text>%2815%20Topics%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="207" controlTypeID="com.balsamiq.mockups::Paragraph" x="236" y="1536" w="186" h="102" measuredW="275" measuredH="80" zOrder="88" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>JavaScript%20is%20classified%20as%20a%20prototype-based%20scripting%20language%20with%20dynamic%20typing%20and%20first-class%20functions.</text>
+      </controlProperties>
+    </control>
+    <control controlID="232" controlTypeID="com.balsamiq.mockups::RoundButton" x="254" y="1662" w="149" h="48" measuredW="32" measuredH="32" zOrder="89" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>16777215</borderColor>
+        <shape>roundRect</shape>
+        <shapeRotation>180</shapeRotation>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="233" controlTypeID="com.balsamiq.mockups::Link" x="308" y="1679" w="-1" h="-1" measuredW="43" measuredH="22" zOrder="90" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>VIEW</text>
+      </controlProperties>
+    </control>
+    <control controlID="234" controlTypeID="com.balsamiq.mockups::HRule" x="254" y="1665" w="149" h="-1" measuredW="100" measuredH="10" zOrder="91" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13421772</color>
+      </controlProperties>
+    </control>
+    <control controlID="235" controlTypeID="com.balsamiq.mockups::Canvas" x="515" y="1469" w="274" h="200" measuredW="100" measuredH="70" zOrder="92" locked="false" isInGroup="-1">
+      <controlProperties>
+        <backgroundAlpha>1</backgroundAlpha>
+        <borderColor>16777215</borderColor>
+        <borderStyle>roundedSolid</borderStyle>
+        <color>16777215</color>
+      </controlProperties>
+    </control>
+    <control controlID="236" controlTypeID="com.balsamiq.mockups::Label" x="551" y="1493" w="-1" h="-1" measuredW="40" measuredH="28" zOrder="93" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>true</bold>
+        <color>0</color>
+        <size>20</size>
+        <text>PHP</text>
+      </controlProperties>
+    </control>
+    <control controlID="237" controlTypeID="com.balsamiq.mockups::Label" x="605" y="1497" w="70" h="-1" measuredW="63" measuredH="20" zOrder="94" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <color>0</color>
+        <size>12</size>
+        <text>%2845%20Topics%29</text>
+      </controlProperties>
+    </control>
+    <control controlID="239" controlTypeID="com.balsamiq.mockups::RoundButton" x="569" y="1662" w="149" h="48" measuredW="32" measuredH="32" zOrder="95" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>16777215</borderColor>
+        <shape>roundRect</shape>
+        <shapeRotation>180</shapeRotation>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="240" controlTypeID="com.balsamiq.mockups::Link" x="623" y="1679" w="-1" h="-1" measuredW="43" measuredH="22" zOrder="96" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>VIEW</text>
+      </controlProperties>
+    </control>
+    <control controlID="241" controlTypeID="com.balsamiq.mockups::HRule" x="569" y="1665" w="149" h="-1" measuredW="100" measuredH="10" zOrder="97" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>13421772</color>
+      </controlProperties>
+    </control>
+    <control controlID="242" controlTypeID="com.balsamiq.mockups::Paragraph" x="552" y="1532" w="186" h="102" measuredW="275" measuredH="80" zOrder="98" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>PHP%20is%20a%20server%5C-side%20scripting%20language%20designed%20for%20web%20development%20but%20also%20used%20as%20a%20general%5C-purpose%20programming%20language.</text>
+      </controlProperties>
+    </control>
+    <control controlID="244" controlTypeID="com.balsamiq.mockups::RoundButton" x="848" y="1469" w="214" h="200" measuredW="32" measuredH="32" zOrder="99" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>16777215</borderColor>
+        <shape>circle</shape>
+      </controlProperties>
+    </control>
+    <control controlID="245" controlTypeID="com.balsamiq.mockups::Link" x="934" y="1558" w="-1" h="-1" measuredW="47" measuredH="22" zOrder="100" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>16</size>
+        <text>MORE</text>
+      </controlProperties>
+    </control>
+    <control controlID="246" controlTypeID="com.balsamiq.mockups::Canvas" x="167" y="1815" w="960" h="565" measuredW="100" measuredH="70" zOrder="101" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>14540253</borderColor>
+        <borderStyle>roundedSolid</borderStyle>
+        <color>14540253</color>
+      </controlProperties>
+    </control>
+    <control controlID="247" controlTypeID="com.balsamiq.mockups::Label" x="209" y="1845" w="-1" h="-1" measuredW="163" measuredH="32" zOrder="102" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bold>false</bold>
+        <color>0</color>
+        <size>24</size>
+        <text>ASSESSMENT</text>
+      </controlProperties>
+    </control>
+    <control controlID="248" controlTypeID="com.balsamiq.mockups::RoundButton" x="209" y="1911" w="120" h="120" measuredW="32" measuredH="32" zOrder="103" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>16777215</borderColor>
+        <shape>circle</shape>
+        <text>Create%20a%20Practice%20Test</text>
+      </controlProperties>
+    </control>
+    <control controlID="249" controlTypeID="com.balsamiq.mockups::RoundButton" x="370" y="2046" w="120" h="120" measuredW="32" measuredH="32" zOrder="104" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>16777215</borderColor>
+        <shape>circle</shape>
+        <text>Take%20the%20Test</text>
+      </controlProperties>
+    </control>
+    <control controlID="250" controlTypeID="com.balsamiq.mockups::RoundButton" x="525" y="1910" w="120" h="120" measuredW="32" measuredH="32" zOrder="105" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>16777215</borderColor>
+        <shape>circle</shape>
+        <text>Compare%20with%20the%20Actual%20Answers</text>
+      </controlProperties>
+    </control>
+    <control controlID="251" controlTypeID="com.balsamiq.mockups::RoundButton" x="223" y="2196" w="120" h="120" measuredW="32" measuredH="32" zOrder="106" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>16777215</borderColor>
+        <shape>circle</shape>
+        <text>Selector%20a%20Mentor%20Created%20Test</text>
+      </controlProperties>
+    </control>
+    <control controlID="252" controlTypeID="com.balsamiq.mockups::RoundButton" x="523" y="2194" w="120" h="120" measuredW="32" measuredH="32" zOrder="107" locked="false" isInGroup="-1">
+      <controlProperties>
+        <borderColor>16777215</borderColor>
+        <shape>circle</shape>
+        <text>Submit%20it%20to%20your%20Mentor</text>
+      </controlProperties>
+    </control>
+    <control controlID="253" controlTypeID="com.balsamiq.mockups::Arrow" x="319" y="2007" w="62" h="58" measuredW="150" measuredH="100" zOrder="108" locked="false" isInGroup="-1"/>
+    <control controlID="254" controlTypeID="com.balsamiq.mockups::Arrow" x="474" y="2147" w="62" h="58" measuredW="150" measuredH="100" zOrder="109" locked="false" isInGroup="-1"/>
+    <control controlID="255" controlTypeID="com.balsamiq.mockups::Arrow" x="318" y="2147" w="62" h="58" measuredW="150" measuredH="100" zOrder="110" locked="false" isInGroup="-1">
+      <controlProperties>
+        <direction>bottom</direction>
+      </controlProperties>
+    </control>
+    <control controlID="256" controlTypeID="com.balsamiq.mockups::Arrow" x="474" y="2005" w="62" h="58" measuredW="150" measuredH="100" zOrder="111" locked="false" isInGroup="-1">
+      <controlProperties>
+        <direction>bottom</direction>
+      </controlProperties>
+    </control>
+    <control controlID="257" controlTypeID="com.balsamiq.mockups::HSplitter" x="717" y="1911" w="-1" h="405" measuredW="11" measuredH="100" zOrder="112" locked="false" isInGroup="-1"/>
+    <control controlID="260" controlTypeID="com.balsamiq.mockups::Button" x="829" y="2013" w="200" h="200" measuredW="106" measuredH="27" zOrder="113" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>3355443</color>
+        <text>Get%20Assessed</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

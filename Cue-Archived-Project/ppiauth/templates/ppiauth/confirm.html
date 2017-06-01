@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  {% if user.id %}
+    <meta http-equiv="REFRESH" content="0;url={% url 'core_index' %}">
+  {% else %}
+    <div class="container alert alert-success">
+      <h3><strong>Your registration has been completed!!!</strong></h3>
+      <h4>Your Email is Verified... You can log in now...</h4>
+    </div>
+  {% endif %}
+
+{% endblock content %}

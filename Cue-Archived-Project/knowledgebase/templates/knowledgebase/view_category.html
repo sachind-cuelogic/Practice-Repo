@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/knowledgebase_view_category.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-multiselect.css' %}">
+{% block view_category %}
+<div class="container">
+  <div class="jumbotron" align="center">
+    {% include 'knowledgebase/kbheader.html' %}
+    <br>
+    <div class="row" id="headerlist">
+      <div class="col-md-4">
+        <h4 >Categories</h4>
+      </div>
+      <div class="col-md-4">
+        <h4>Latest Topics</h4>
+      </div>
+      <div class="col-md-4" >
+        <h4>Latest Entries</h4>
+      </div>
+    </div>
+    <br>
+    <div class="container">
+        {% if message %}
+          <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            {{ message }}
+          </div>
+        {% endif %}
+      </div>
+    <div class="container">
+    {% if categories %}
+      {% for category in categories %}
+        <div class="well">
+            <div class="row">
+              <div class="col-sm-4">
+                {% load knowledgebase_utils%}
+                {% get_hash category.name as category_name%}
+                <a href="{% url 'ppi-knowledgebase:view_knowledgebase' %}?cparam={{category_name}}">
+                  <h4>
+                  <strong>{{category.name}}
+                   </strong>
+                  </h4>
+                </a>
+              </div>
+              <div class="col-sm-4">
+               {% if topics%}
+                  {% for each_topic in topics %}
+                    {% for key,value in each_topic.items %}
+                      {% if key == category %}
+                          {% for topic in value%}
+                            {% get_hash topic.name as topicparam%}
+                            <a href="{% url 'ppi-knowledgebase:view_knowledgebase' %}?tparam={{topicparam}}" class="link">
+                              <h6>
+                                  <strong>{{topic.name|title}}</strong>
+                              </h6>
+                            </a>
+                          {% endfor %}
+                        {% endif %}
+                      {% endfor %}
+                    {% endfor %}
+                    {% else %}
+                {% endif %}
+              </div>
+              <div class="col-sm-4 displayquestion">
+              {% autoescape off %}
+                {% if list_questions%}
+                  {% for each_question in list_questions %}
+                    {% for key,value in each_question.items %}
+                      {% if key == category %}
+                          {% for question in value%}
+                            {% get_hash question.question as questionparam%}
+                            <a href="{% url 'ppi-knowledgebase:view_knowledgebase' %}?qparam={{questionparam}}" class="link">
+                              <h6 class="displayquestion">
+                                  <p>
+                                    <strong>{% autoescape off %}{{question.question|striptags}}{% endautoescape %}</strong>
+                                  </p>
+                              </h6>
+                            </a>
+                          {% endfor %}
+                        {% endif %}
+                      {% endfor %}
+                    {% endfor %}
+                    {% else %}
+                {% endif %}
+              {% endautoescape %}
+              </div>
+            </div>
+          <br/>
+          <div class="row">
+            <div class="col-md-2">
+              <h4>Mentors</h4>
+            </div>
+            {% if category.mentors.all %}
+               {%for mentor in category.mentors.all|slice:"3"%}
+                  <div class="col-md-2 img-col">
+                    {% if mentor.userprofile.profile_picture_macroicon %}
+                      {% load account_utils %}
+                      {% get_user_hash mentor as hashed_email %}
+                      <a href="{% url 'ppi-accounts:profile_view' hashed_email %}" >
+                        <img alt="image" class="img-circle" src="{{ mentor.userprofile.profile_picture_macroicon.url }}">
+                        <figcaption class="link">
+                          {% filter force_escape|title  %}
+                            {{mentor.userprofile.first_name}}
+                          {% endfilter %}
+                        </figcaption></a>
+                    {% else %}
+                      {% load account_utils %}
+                      {% get_user_hash mentor as hashed_email %}
+                      <a href="{% url 'ppi-accounts:profile_view' hashed_email %}" >
+                            <img src="{% static 'images/userprofile_macroicon.jpg' %}" class="img-circle">
+                        <figcaption class="link">
+                          {% filter force_escape|title %}
+                            {{mentor.userprofile.first_name}}
+                          {% endfilter %}
+                        </figcaption>
+                      </a>
+                    {% endif %}
+                  </div>
+              {% endfor %}
+           {% else %}
+                <div class="col-md-1">
+                  <img src="{% static 'images/userprofile_macroicon.jpg' %}" class="img-circle"><br>
+                </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+          </div>
+          <div class="col-md-4">
+            <div class="well viewblock ">
+              {% load knowledgebase_utils%}
+              {% get_hash category.name as category_name%}
+              <strong><a href="{% url 'ppi-knowledgebase:view_knowledgebase' %}?cparam={{category_name}}">VIEW QUESTIONS
+              &amp; ANSWERS</a></strong>
+            </div>
+          </div>
+        </div>
+        <br>
+      {% endfor %}
+    {% endif %}
+    </div>
+      <br>
+    {% load knowledgebase_utils %}
+    {% if categories.paginator %}
+    <div class="row">
+      <center>
+        <div class="span8 offset3">
+          <div class="pagination">
+            <ul class="pager">
+              {% get_url_hash active_category=activecategory active_topic=activetopic active_difficulty=activedifficulty search_query=search as decoded%}
+              <li>{% if categories.has_previous %}
+                        <a href="?page={{ categories.previous_page_number }}&param={{decoded}}">previous</a>
+                    {% endif %}
+              </li>
+              <li>
+                <ul class="pagination">
+                {% get_page_list categories.paginator.page_range categories.number as page_list%}
+                {% for p in page_list %}
+
+                    <li {% ifequal p categories.number %} class="active" {% endifequal %}>
+                      <a href="?param={{decoded}}&amp;page={{p}}" >{{p}} </a>
+
+                    </li>
+                  {% empty %}
+                    <li class="active">
+                      <a href="?param={{decoded}}&amp;page=1" class="selected">1</a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              </li>
+              {% get_url_hash active_category=activecategory active_topic=activetopic active_difficulty=activedifficulty search_query=search as decoded%}
+              <li>
+                {% if categories.has_next %}
+                    <a href="?page={{ categories.next_page_number }}&param={{decoded}}">next</a>
+                {% endif %}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </center>
+    </div>
+  {% endif %}
+{% endblock %}
+{% block scripts_extend %}
+  <script type="text/javascript" src="{% static 'js/knowledgebase_view_category.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap-multiselect.js' %}"></script>
+{% endblock %}

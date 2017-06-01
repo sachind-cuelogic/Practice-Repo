@@ -1,0 +1,27 @@
+{% extends 'header.html' %}
+
+{% block header_extend %}
+
+<ul class="nav navbar-nav">
+  <li>
+    <a href="{% url 'ppi-auth:registration' %}">Register</a>
+  </li>
+</ul>
+
+<form class="navbar-form navbar-left" role="login" action="" method="POST">
+  {%csrf_token%}
+  <div class ="form-group">
+    {{ login_form.username }}
+    {{ login_form.password }}
+  </div>
+  <button type="submit" class="btn btn-default">Login</button>
+  <input type="hidden" name="ppi_auth_login" value="true" />
+</form>
+
+<ul class="nav navbar-nav">
+  <li>
+    <a href="{% url 'ppi-auth:password_recovery' %}">Forgot your password?</a>
+  </li>
+</ul>
+
+{% endblock header_extend %}

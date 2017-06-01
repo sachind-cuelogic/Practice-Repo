@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container alert alert-warning">
+<h2>Since your activation key is expired <br/> Your email is not verified.</h2>
+<br/>
+<h4>Please <a href= "{% url 'ppi-auth:resend_activation_key' %}">click here</a> to re-send the activation key...</h4>
+
+{% endblock content %}

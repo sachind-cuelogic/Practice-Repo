@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block stylesheets_extend %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/assessment_create_test.css' %}">
+{% endblock %}
+
+{% block create_test %}
+<div class="container">
+    <div class="jumbotron">
+        <h2>PRACTICE TEST RESULT</h2>
+        <form method="GET" role="form">
+            <br>
+            {% for question in questions %}
+            {% if questions.number <= no_of_questions %}
+            <div class="well small">
+                {% if no_of_questions < questions.paginator.count %}
+                <h4>Question {{ questions.number }} of {{no_of_questions}}</h4>
+                {% else %}
+                <h4>Question {{ questions.number }} of {{questions.paginator.count}}</h4>
+                {% endif %}
+            </div>
+            <div class="well">
+                <div class="row row-md-1">
+                    <div class="col-md-4">
+                        <h4>
+                            {% for category in question.categories.all %}
+                            <a href="#" class="btn rec-btn">
+                            </a>
+                            <strong>{{ category }}</strong>
+                            {% endfor %}
+                        </h4>
+                    </div>
+                    <div class="col-sm-8" align="right">
+                        {%for topics in question.topics.all%}
+                        <button type="button" class="btn purple">
+                        <strong>{{ topics }}</strong>
+                        </button>
+                        {% endfor %}
+                    </div>
+                </div>
+                <h4>{{ question.question|safe }}</h4>
+                <h6>Difficulty</h6>
+                <div class="row">
+                    <div class="col-sm-2">
+                        {% if question.difficulty_level == 3 %}
+                        <a href="#" class="btn btn-danger btn-circle"></a>
+                        {% elif question.difficulty_level == 1 %}
+                        <a href="#" class="btn btn-success btn-circle"></a>
+                        {% else %}
+                        <a href="#" class="btn btn-warning btn-circle"></a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="question_id" id="question_id" value="{{ question.id }}">
+            <div class="row row-md-1">
+                <div class="col-md-6">
+                    <div class="well small correctanswer">
+                        <h4>Correct Answer</h4>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="well small useranswer">
+                        <h4>Your Answer</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row row-md-1">
+                <div class="col-md-6">
+                    <div id="correct_answer" class="well">
+                        {{ question.answer|safe }}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div id="user_answer" class="well"></div>
+                </div>
+            </div>
+            {% if questions.paginator %}
+            <div class="row">
+                <center>
+                    <div class="span8 offset3">
+                        <div class="pagination">
+                            <ul class="pager">
+                                <div class="row">
+                                    {% if questions.has_previous %}
+                                    <a href="{% url 'ppi-assessment:practice_test_result' %}?page=1"><button type="button" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-chevron-left"></span> <strong>First</strong>
+                                    </button></a>
+                                    <a href="{% url 'ppi-assessment:practice_test_result' %}?page={{ questions.previous_page_number }}"><button type="button" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-chevron-left"></span> <strong>Prev</strong>
+                                    </button></a>
+                                    {% endif %}
+                                    {% if questions.has_next %}
+                                    <a href="{% url 'ppi-assessment:practice_test_result' %}?page={{ questions.next_page_number }}"><button type="button" class="btn btn-default btn-sm">
+                                    <strong>Next</strong><span class="glyphicon glyphicon-chevron-right"></span>
+                                    </button></a>
+                                    <a href="{% url 'ppi-assessment:practice_test_result' %}?page={{questions.paginator.count}}"><button type="button" class="btn btn-default btn-sm">
+                                    <strong>Last</strong><span class="glyphicon glyphicon-chevron-right"></span>
+                                    </button></a>
+                                    {% else %}
+                                    <br><br><br>
+                                    <a href="/">Go To Home Page</a> | 
+                                    <a href="{% url 'ppi-assessment:practice_test_create' %}">Take Another Test</a>
+                                    {% endif %}
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </center>
+            </div>
+            <br><br>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts_extend %}
+<script src="{% static 'js/assessment_result.js' %}"></script>
+<script src="{% static 'js/jstorage.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,248 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block stylesheets_extend %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block home %}
+{% if homepage_display_msg.count != 0 %}
+<div class="jumbotron">
+    <div class="container">
+        <div class="row row-eq-height">
+            {% if homepage_display_msg.count == 1 %}
+            {% for home in homepage_display_msg %}
+            <div class="wellcenter col-md-6">
+                <div class="headerinfo">
+                    {{ home.display_msg|safe }}
+                    <button type="button" class="btn btn-primary tourbtn">Take a tour</button>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% if homepage_display_msg.count == 2 %}
+            {% for home in homepage_display_msg %}
+            <div class="well well-lg col-md-6 col-eq-spacing">
+                <div class="headerinfo">
+                    {{ home.display_msg|safe }}
+                    <button type="button" class="btn btn-primary tourbtn">Take a tour</button>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    <br>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block view_category %}
+<div class="container">
+    <div class="jumbotron">
+        <H2>KNOWLEDGE BASE</H2>
+        <br>
+        <div class="row">
+            <div class="col-md-1">
+                <h5 class="category">Category</h5>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-2">
+                <h5 class="topic">Latest Topics</h5>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-2">
+                <h5 class="entries">Latest Entries</h5>
+            </div>
+        </div>
+        {% for category in categories|slice:":2" %}
+        <div class="well">
+            <div class="row">
+                <div class="col-sm-4">
+                    {% load knowledgebase_utils%}
+                    {% get_hash category.name as category_name%}
+                    <a href="{% url 'ppi-knowledgebase:view_knowledgebase' %}?cparam={{category_name}}">
+                        <h4>
+                            <strong >{{category.name}}</strong>
+                        </h4>
+                    </a>
+                </div>
+                <div class="col-sm-4">
+                    {% if topics%}
+                    {% for each_topic in topics %}
+                    {% for key,value in each_topic.items %}
+                    {% if key == category %}
+                    {% for topic in value%}
+                    {% get_hash topic.name as topicparam%}
+                    <a href="{% url 'ppi-knowledgebase:view_knowledgebase' %}?tparam={{topicparam}}" class="link">
+                        <h6 class="displaycontent">
+                            <p>
+                                <strong>{{topic.name}}</strong>
+                            </p>
+                        </h6>
+                    </a>
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                    {% endfor %}
+                    {% else %}
+                    {% endif %}
+                </div>
+                <div class="col-sm-4">
+                    {% autoescape off %}
+                    {% if questions%}
+                    {% for each_question in questions %}
+                    {% for key,value in each_question.items %}
+                    {% if key == category %}
+                    {% for question in value%}
+                    {% get_hash question.question as questionparam%}
+                    <a href="{% url 'ppi-knowledgebase:view_knowledgebase' %}?qparam={{questionparam}}"class="link">
+                        <h6 class="displaycontent">
+                            <p>
+                                <strong>{% autoescape off %}{{question.question|title}}{% endautoescape %}</strong>
+                            </p>
+                        </h6>
+                    </a>
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                    {% endfor %}
+                    {% else %}
+                    {% endif %}
+                    {% endautoescape %}
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-md-2">
+                    <h4>Mentors</h4>
+                </div>
+                {% if category.mentors.all %}
+                {%for mentor in category.mentors.all|slice:"3"%}
+                <div class="col-md-2 img-col">
+                    {% if mentor.userprofile.profile_picture_macroicon %}
+                    {% load account_utils %}
+                    {% get_user_hash mentor as hashed_email %}
+                    <a href="{% url 'ppi-accounts:profile_view' hashed_email %}" >
+                        <img alt="image" class="img-circle" src="{{ mentor.userprofile.profile_picture_macroicon.url }}">
+                        <figcaption class="link">
+                            {% filter force_escape|title  %}
+                            {{mentor.userprofile.first_name}}
+                            {% endfilter %}
+                        </figcaption>
+                    </a>
+                    {% else %}
+                    {% load account_utils %}
+                    {% get_user_hash mentor as hashed_email %}
+                    <a href="{% url 'ppi-accounts:profile_view' hashed_email %}" >
+                        <img src="{% static 'images/userprofile_macroicon.jpg' %}" class="img-circle">
+                        <figcaption class="link">
+                            {% filter force_escape|title %}
+                            {{mentor.userprofile.first_name}}
+                            {% endfilter %}
+                        </figcaption>
+                    </a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="col-md-1">
+                    <img src="{% static 'images/userprofile_macroicon.jpg' %}" class="img-circle"><br>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+                <div class="well viewblock ">
+                    {% load knowledgebase_utils%}
+                    {% get_hash category.name as category_name%}
+                    <a href="{% url 'ppi-knowledgebase:view_knowledgebase' %}?cparam={{category_name}}">View </a>
+                </div>
+            </div>
+        </div>
+        <br>
+        {% endfor %}
+        <div class="container">
+            <div class="row row-eq-height">
+                {% for category in categories|slice:"2:4" %}
+                <div class="well well-lg col-md-4 col-eq-spacing">
+                    {% load knowledgebase_utils%}
+                    {% get_hash category.name as category_name%}
+                    <a href="{% url 'ppi-knowledgebase:view_knowledgebase' %}?cparam={{category_name}}">
+                        <h4>
+                            <strong >{{category.name}}</strong>
+                        </h4>
+                    </a>
+                    {% if topics%}
+                    {% for each_topic in topics %}
+                    {% for key,value in each_topic.items %}
+                    {% if key == category %}
+                    {% for topic in value%}
+                    {% get_hash topic.name as topicparam%}
+                    <a href="{% url 'ppi-knowledgebase:view_knowledgebase' %}?tparam={{topicparam}}" class="link">
+                        <h6 class="displaycontent">
+                            <p>
+                                <strong>{{topic.name}}</strong>
+                            </p>
+                        </h6>
+                    </a>
+                    {% endfor %}
+                    {% endif %}
+                    {% endfor %}
+                    {% endfor %}
+                    {% else %}
+                    {% endif %}
+                </div>
+                {% endfor %}
+                <div class="col-md-4">
+                    <a href="/knowledgebase/categories/view/">
+                        <div class="btn btn-default btn-circle">
+                            MORE
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for category in categories|slice:"2:4" %}
+            <div class="col-md-1">
+            </div>
+            <div class="col col-md-2">
+                <div>
+                    <div class="well viewblock ">
+                        {% load knowledgebase_utils%}
+                        {% get_hash category.name as category_name%}
+                        <a href="{% url 'ppi-knowledgebase:view_knowledgebase' %}?cparam={{category_name}}">View </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1">
+            </div>
+            {% endfor %}
+        </div>
+        <br><br>
+    </div>
+</div>
+{% endblock %}
+
+{% block assessment %}
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <H2>ASSESSMENT</H2>
+            <br>
+            <div class="col-md-8">
+                <img src="{% static 'images/assessment_img.png' %}">
+            </div>
+            <div class="col-md-4">
+                <a href="{% url 'ppi-assessment:practice_test_create' %}">
+                    <div class="btn btn-default btn-square">Get Assessed</div>
+                </a>
+            </div>
+        </div>
+        <br><br>
+    </div>
+</div>
+{% endblock %}

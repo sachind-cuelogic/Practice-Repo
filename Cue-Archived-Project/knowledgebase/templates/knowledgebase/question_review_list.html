@@ -1,0 +1,128 @@
+{% extends 'base.html'%} {% load staticfiles %} {% block content %}
+<div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h3>Review Question Answers</h3>
+      </div>
+      {% include 'knowledgebase/searchform.html'%}
+    </div>
+    <ul id="nav" class="nav nav-tabs">
+        <li{% if active_tab == 'all'%} class="active"{% endif%}><a id="all" data-toggle="tab" href="{% url 'ppi-knowledgebase:question_review' %}">All</a></li>
+        <li {% if active_tab == 'publish'%} class="active"{% endif%}><a id="published" data-toggle="tab" href="{% url 'ppi-knowledgebase:question_review_publish' %}">Published</a></li>
+        <li {% if active_tab == 'review'%} class="active"{% endif%}><a id="review" data-toggle="tab" href="{% url 'ppi-knowledgebase:question_review_submit' %}">Review</a></li>
+        <li {% if active_tab == 'flag'%} class="active"{% endif%}><a id="review" data-toggle="tab" href="{% url 'ppi-knowledgebase:question_review_flag' %}">Flagged</a></li>
+    </ul>
+    <div class="col-sm-0 col-sm-offset-0 col-md-0 col-md-offset-0 main">
+        <br/>
+    </div>
+    <div id="state-all">
+        {% if question_array.0 %}
+        {% for question in question_array.0 %}
+        <div id="row">
+            <div class="media-body ">
+            {% if active_tab != 'review'%}
+            {% load knowledgebase_utils %}
+            {% url_encode question.id request.get_full_path as encoded_url %}
+                <a href="{% url 'ppi-knowledgebase:question_answer_add' %}?param={{encoded_url}}" class="pull-right btn btn-xs btn-success">
+                    <i class="fa fa-external-link-square">
+                    </i> View</a>
+            {% endif %}
+                <span class="glyphicon glyphicon-question-sign"></span>
+                <strong id="question">
+        <div>
+          {% autoescape off %}{{ question.question }}{% endautoescape %}
+        </div>
+        </strong> posted question in <strong id="category">
+          {% for category in question.categories.all %}
+            {{ category }}
+          {% endfor %}
+        </strong>
+                <div class="pull-right">
+                    Posted by: <strong id="username"> {{ question.user }} </strong>
+                </div>
+                <br>
+                <small class="text-muted">Under topics</small>
+                <strong id="topic">
+            {% for topic in question.topics.all %}
+              {{ topic }}
+            {% endfor %}
+        </strong>
+                <span class="background-change">
+            {% ifequal question.get_state_display 'DRAFT' %} <strong>DRAFT</strong> {% endifequal %}
+            {% ifequal question.get_state_display 'SUBMIT' %} <strong>SUBMITED</strong> {% endifequal %}
+            {% ifequal question.get_state_display 'PUBLISH' %} <strong>PUBLISHED</strong> {% endifequal %}
+        </span>
+                <div class="pull-right">
+                    Posted On: <strong id="date"> {{ question.date_added }} </strong>
+                </div>
+                <div class="question-answer-well">
+                    <div class="well" id="answer">
+                        <span class="glyphicon glyphicon-text-background">
+                        {% autoescape off %}{{ question.answer }}{% endautoescape %}</span>
+                    </div>
+                </div>
+                {% if active_tab == 'review'%}
+                  <div id="que-ans-{{question.id}}" class="pull-right">
+                  {% url_encode question.id request.get_full_path as encoded_url %}
+                    <a href="{% url 'ppi-knowledgebase:question_answer_add' %}?param={{encoded_url}}" class="btn btn-xs btn-success">
+                        <i class="fa fa-external-link-square">
+                    </i> Edit</a>
+                    <div class="display-button" id="publish-{{question.id}}">
+                        <input type="submit" class="btn btn-success btn-xs " value="Publish" id="{{question.id}}">
+                    </div>
+                    <div class="display-button" id="reject-{{question.id}}">
+                        <input type="submit" class="btn btn-danger btn-xs " value="Reject" id="{{question.id}}">
+                    </div>
+                </div>
+            {% endif%}
+            </div>
+        </div>
+        {% endfor %}
+
+
+{% load knowledgebase_utils %}
+            {% if question_array.0.paginator %}
+            <div class="row">
+                <center>
+                    <div class="span8 offset3">
+                        <div class="pagination">
+                            <ul class="pager">
+                                {% get_hash search as decoded %}
+                                <li>{% if question_array.0.has_previous %}
+                                    <a href="?query={{decoded}}&page={{ question_array.0.previous_page_number }}">previous</a> {% endif %}
+                                </li>
+                                <li>
+                                    <ul class="pagination">
+                                        {% get_hash search as decoded%}
+
+                                        {% get_page_list question_array.0.paginator.page_range question_array.0.number as page_list%}
+                                        {% for p in page_list %}
+                                        <li {% ifequal p question_array.0.number %} class="active" {% endifequal %}>
+                                            <a href="?query={{decoded}}&amp;page={{p}}">{{p}} </a>
+                                        </li>
+                                        {% empty %}
+                                        <li class="active">
+                                            <a href="?query={{decoded}}&amp;page=1" class="selected">1</a>
+                                        </li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                                <li>                            
+                                    {% get_hash search as decoded%}
+                                    {% if question_array.0.has_next %}
+                                    <a href="?query={{decoded}}&amp;page={{ question_array.0.next_page_number }}">next</a> {% endif %}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </center>
+            </div>
+            {% endif %}
+{% else %}
+    <h2>There are no questions to display </h2>
+{% endif %}
+
+{% endblock %} {% block scripts_extend %}
+<script type="text/javascript" src="{% static 'js/ppi.js'%}"></script>
+<script type="text/javascript" src="{% static 'js/knowledgebase-que-ans-pub.js'%}"></script>
+{% endblock %}

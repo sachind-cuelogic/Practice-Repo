@@ -1,0 +1,29 @@
+{% for review in results%}
+{% load knowledgebase_utils %}
+{% check_user review.review_author review.loggedin_user as user %}
+{% if user %}
+<li> 
+<div class="commentLeft"> 
+<b> {{review.user}}:</b>
+<p class="">
+    {{review.review_note}} 
+</p>
+<span class="date sub-text">
+    {{review.date}} &nbsp;{{review.note_time_hour}} : {{review.note_time_min }}
+</span>
+</div>
+</li>
+{% else %}
+<li> 
+<div class="commentRight"> 
+<b> {{review.user}}:</b>
+<p class="">
+    {{review.review_note}} 
+</p>
+<span class="date sub-text">
+    {{review.date}} &nbsp;{{review.note_time_hour}} : {{review.note_time_min }}
+</span>
+</div>
+</li>
+{% endif %}
+{% endfor %}

@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container wrapper wrapper-content">
+    <div class="row animated fadeInRight">
+        <div class="col-md-4" >
+            <div class="pro float-e-margins">
+                <div class="pro-title">
+                    <h5>Profile Detail</h5>
+                </div>
+                <div>
+                    <div class="pro-content no-padding border-left-right" style="height:300px;">
+                    <center>
+                    {% if user_profile.profile_picture_thumbnail %}
+                        <img alt="image" class="img-responsive " src="{{ user_profile.profile_picture_thumbnail.url }}">
+                    {% else %}
+                        <img src="{% static 'images/userprofile.jpg' %}" class="img-responsive">
+                    {% endif %}
+                    </center>
+                    </div>
+                    <br />
+                    <div class="pro-content profile-content">
+                        <h4><strong>{{ user_profile.first_name }} {{ user_profile.last_name }}</strong><sup style="background-color:#e7eaec;">{{ user_profile.user_type }}</sup></h4>
+                        <h5> {{ user_profile.designation }} </h5>
+                        <div class="row m-t-lg">
+                            <div class="col-md-4"><center>
+                                <span class="glyphicon glyphicon-question-sign" style="font-size:20px; color:#1ab394;"></span>
+                                <h5><strong>--</strong> <br/>Questions</h5></center>
+                            </div>
+                            <div class="col-md-4" ><center>
+                                <span class="glyphicon glyphicon-list" style="font-size:20px; color:#1ab394;"></span>
+                                <h5><strong>--</strong> <br/>Topics</h5></center>
+                            </div>
+                            <div class="col-md-4"><center>
+                                <span class="glyphicon glyphicon-tasks" style="font-size:20px;color:#1ab394;"></span>
+                                <h5><strong>--</strong> <br/>Categories</h5></center>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+            </div>
+        <div class="col-md-8">
+            <div class="pro float-e-margins">
+                <div class="pro-title">
+                    <strong>Profile</strong>
+                    {% if user == request.user %}
+                    <div class="pull-right">
+                        <a class="btn btn-xs btn-success" href="{% url 'ppi-accounts:profile_edit' %}"><i class="fa fa-external-link-square"></i> Edit</a>
+                    </div>
+                    {% endif %}
+                    </div>
+                <div class="pro-content " >
+                    <div class= "pro-box">
+                    <p>
+                        <span class="change-color"><strong>About</strong></span>
+                    </p>
+                    <p>
+                            {{ user_profile.about }}
+                    </p>
+                    <p>
+                        <strong>{{ user_profile.gender }}</strong><br />
+                        <strong><span class="change-color">Born On </span>{{ user_profile.dob }}</strong><br/>
+                        <strong><span class="change-color">Joined </span>{{ user.date_joined|date }}</strong>
+                        <br/>
+                    </p>
+                    <p>
+                        <br/>
+                        <span class="change-color">Contact &commat;</span> {{ user }}
+                    </p>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

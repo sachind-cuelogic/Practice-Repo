@@ -1,0 +1,155 @@
+.well{
+  background-color:#ffffff; 
+  margin-left:5px;
+  text-align:left
+}
+.btn-circle {
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  padding: 5px 0;
+  font-size: 20px;
+  line-height: 2.00;
+  border-radius: 30px;
+  cursor: initial;
+}
+.rec-btn {
+    border-radius: 1px;
+    moz-border-radius: 1px;
+    webkit-border-radius: 1px;
+    height: 28px;
+    width: 10px; 
+    border:2px #05050A solid;
+    padding-right: 3px;
+}
+#viewdetails {
+    padding: 5px;
+    margin-left: -250px;
+    width: 308%;
+  }
+pre{
+  font-size: 18px;
+  font-family: inherit;
+  background-color:#ffffff;
+  border: none;
+  text-align:left;
+  overflow: hidden;
+  white-space: pre-wrap;
+  word-break: normal;
+}
+.viewques{
+  padding:9px;
+  background-color:#ffffff;
+  width: 128%;
+  padding: 5px;
+  margin-left: -40px;
+}
+.viewans
+{
+  background-color:#ffffff;
+  display:none; 
+  margin-right: 20px;
+  overflow : hidden;
+}
+.jumbotron{
+  width: 100%;
+  text-align:center;
+}
+.shadow{
+  box-shadow:3px 3px #888888;
+}
+.colwidth{
+  width : 165px;
+}
+.view_link{
+  padding-left: 120px;
+}
+.difficulty_icon {
+  cursor: not-allowed;
+}
+#col-cat{
+  margin-left: 33px;
+}
+#col-search{
+  margin-left: -10px;
+}
+#col-filter{
+  margin-left: 10px;
+}
+#col-category{
+  margin-left: 85%;
+  text-align: right;
+  font-size: 15px;
+  padding: 5px;
+  margin-top: -5%;
+}
+#col-searchform{
+  margin-left: -32px;
+  margin-top: 1px;
+}
+.catpage{
+  padding-left: 335px;
+  padding-right: 330px;
+}
+.pager li > a, .pager li > span {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  color: #000000;
+  display: inline-block;
+  list-style: outside none none;
+  margin: 20px 0;
+  padding: 6px 25px 5px 24px;
+  text-align: center;
+}
+.header{
+  text-align: left;
+}
+.dropdown-menu {
+left: -45px;
+right: 20px;
+}
+.headline{
+  font-size: 12px;
+}
+.displayquestion .{
+  font-size: 12px;
+}
+.tagbutton{
+  margin-bottom: 6px;
+}
+.all-tags{
+    margin-bottom: 6px;
+    border: none;
+    margin-left: -25px;
+}
+.view_tags{
+    margin-left: 16px;
+}
+.modal-open .modal {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  overflow-y: scroll;
+}
+.flag-question {
+  text-align: left;
+}
+.flag-question p {
+  font-size: 15px;
+  font-weight: 200;
+  margin-bottom: 15px;
+}
+.alert-danger {
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  color: #a94442;
+  font-size: 12px;
+  text-align: left;
+}
+.alert-success {
+  font-size: 12px;
+  text-align: left;
+}
+.alert {
+  padding: 3px;
+}

@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block stylesheets_extend %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/assessment_create_test.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-multiselect.css' %}">
+{% endblock %}
+
+{% block create_test %}
+<div class="container">
+    <div class="jumbotron" align="left">
+        <h2>ASSESSMENT</h2>
+        <br>
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="btn btn-rectangle" id="practice_test_button">Practice test</div>
+            </div>
+            <div class="col-sm-6">
+                <div class="btn btn-rectangle" id="mentor_test_button">Mentor test</div>
+            </div>
+        </div>
+        <br><br>
+        <div id="practice_test">
+            <form action="{% url 'ppi-assessment:practice_test_take' %}" method="POST" id="create_test">
+                {% csrf_token %}
+                <h4><strong>Create a practice test</strong></h4>
+                <br>
+                <div class="row">
+                    <div class="col-sm-3"><strong>Select Category:</strong></div>
+                    <div class="col-sm-3">
+                        <select id="id_Category"  class="btn btn-default" name="category" >
+                            <option class="btn-default" value="0">All</option>
+                            {% for category in categories %}
+                            <option class="btn-default" value="{{category.id}}">
+                                {{category.name}}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <br><br>
+                <div class="row">
+                    <div class="col-sm-3"><strong>Select Topics:</strong></div>
+                    <div class="col-sm-4">
+                        <select id="id_Topic" class="btn btn-default" name="topic_filter" multiple="multiple" >
+                            {% for topic in topics %}
+                            <option class="btn-default" value="{{topic.id}}">
+                                {{topic.name}}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <br><br>
+                <div class="row">
+                    {% load assessment_utils %}
+                    <div class="col-sm-3"><strong>Select Difficulty:</strong></div>
+                    <div class="col-sm-2">
+                        {% get_difficulty_levels as difficulties %}
+                        {% for difficulty_level_value, difficulty_level_label in difficulties %}
+                        <div class="checkbox">
+                            <label><input type="checkbox" name="difficulty" value="{{ difficulty_level_value }}"/>
+                            <span class="label button 
+                                {% if difficulty_level_value == question.DifficultyLevels.BEGINNER %}
+                                label-success
+                                {% elif difficulty_level_value == question.DifficultyLevels.INTERMEDIATE %}
+                                label-warning
+                                {% else %}
+                                label-danger
+                                {% endif %}">
+                            {{ difficulty_level_label }}
+                            </span>
+                            </label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5">
+                        <div id="difficulty_message" class="alert alert-danger"></div>
+                    </div>
+                </div>
+                <br><br>
+                <div class="row">
+                    <div class="col-sm-3"><strong>Enter number of Questions:</strong></div>
+                    <div class="col-sm-2">
+                        <div class="input-group spinner" id="spinner">
+                            <input id="spinner" type="text" class="form-control" value="10" name="ques">
+                            <div class="input-group-btn-vertical">
+                                <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-triangle-top"></i></button>
+                                <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-triangle-bottom"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5">
+                        <div id="spinner_message" class="alert alert-danger"></div>
+                    </div>
+                </div>
+                <br><br>
+            </form>
+            <div class="row">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-2">
+                    <button type="submit" class="btn black" id="start_test" value= "start_test">Start the Test</button>
+                </div>
+                <div class="col-sm-1"></div>
+                <div class="col-sm-5">
+                    <div id="error_message" class="alert alert-danger"></div>
+                </div>
+            </div>
+        </div>
+        <div id="mentor_test">
+            <div class="alert alert-success">
+                <h3><i>Coming Soon.....</i></h3>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts_extend %}
+<script type="text/javascript" src="{% static 'js/assessment_create_test.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap-multiselect.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/knowledgebase_view_category.js' %}"></script>
+<script src="{% static 'js/jstorage.js' %}"></script>
+{% endblock %}

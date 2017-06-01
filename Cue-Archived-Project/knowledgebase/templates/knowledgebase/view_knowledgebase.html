@@ -1,0 +1,278 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/knowledgebase_view_question_answer.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-multiselect.css' %}">
+{% block view_knowledgebase %}
+<div class="container">
+  <div class="jumbotron">
+   {% include 'knowledgebase/kbheader.html' %}
+   <div class="container">
+    {% if message %}
+    <div class="alert alert-danger">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+      {{ message }}
+    </div>
+    {% endif %}
+  </div>
+  <div class="container">
+    {% for list_question in list_questions %}
+    <div class="well">
+      <div class="row">
+        <div class="col-md-4">
+          <h4 align="left">
+            {% for category in list_question.categories.all %}
+            <a href="" class="btn btn-success rec-btn">
+            </a>
+            <strong>{{ category }}</strong>
+            {% endfor %}
+          </h4>
+          <div align="left" class="displayquestion">
+            <h4>
+              {% autoescape off %}
+              {{list_question.question|striptags}}
+              {% endautoescape %}
+            </h4>
+          </div>
+        </div>
+        <div class="col-md-5">
+        </div>
+        <div class="col-md-3">
+          {% for topics in list_question.topics.all %}
+          <button type="button" class="btn btn-success shadowbtn difficulty_icon">
+            {{ topics }}
+          </button>
+          {% endfor %}
+          <!-- Flag button -->
+          {% if request.user.is_authenticated %} {% load knowledgebase_utils %}
+          <div id="flag-{{list_question.id}}" class="pull-right">
+            {% check_flagged list_question.id request.user as flagged%} {% if flagged %}
+            <div data-toggle="modal" data-target="#{{list_question.id}}">
+              <button type="button" class="btn btn-default btn-sm flag">Flag</button>
+            </div>
+            {% else %}
+            <b> Flagged </b> {% endif %}
+          </div>
+          {% endif%}
+          <div id="flag-notification-{{list_question.id}}" align="right"></div>
+        </div>
+      </div>
+      <br/>
+      <div class="row">
+        <div class="col-md-2">
+          <h5>Created</h5>
+        </div>
+        <div class="col-md-2">
+          <h5>Difficulty</h5>
+        </div>
+        <div class="col-md-2">
+          <h5>Mentors</h5>
+        </div>
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-5">
+          {% for tag in list_question.tags.all|slice:"3" %}
+          {% load knowledgebase_utils %}
+              {% get_hash tag.name as decoded%}
+              <a href="{% url 'ppi-knowledgebase:search_question' %}?search={{decoded}}">
+              <button type="button" class="btn btn-info shadowbtn">
+                {{ tag.name }}
+              </button>
+            </a>
+          {% endfor %}
+          {% if  list_question.tags.all|length >= 4  %}
+            <a href="javascript:void(0);" id="taglink-{{list_question.id}}" class="view_tags">View more</a>
+          {% endif %}
+          <div class="well all-tags" id="questiontags-{{list_question.id}}">
+            {% for tag in list_question.tags.all|slice:"3:" %}
+            {% load knowledgebase_utils %}
+              {% get_hash tag.name as decoded%}
+              <a href="{% url 'ppi-knowledgebase:search_question' %}?search={{decoded}}">
+                <button type="button" class="btn btn-info tagbutton">
+                  {{ tag.name }}
+                </button>
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+      <div class="row"> 
+        <div class="col-md-2">
+          {% load account_utils %}
+          {% get_user_hash list_question.user as hashed_email %}
+          <a href="{% url 'ppi-accounts:profile_view' hashed_email %}" class="link">
+            {% if list_question.user.userprofile.profile_picture_macroicon %}
+              <img alt="image" class="img-circle" src="{{ list_question.user.userprofile.profile_picture_macroicon.url }}">
+            {% else %}
+              <img src="{% static 'images/userprofile_macroicon.jpg' %}" class="img-circle">
+            {% endif %}
+
+            <figcaption>{{list_question.user.userprofile.first_name|title}}</figcaption></a><div class="link">{{list_question.date_added.date}}</div>
+          </div>
+          <div class="col-md-2">
+            {% if list_question.difficulty_level ==  list_question.DifficultyLevels.BEGINNER  %}
+            <a class="btn btn-success btn-circle difficulty_icon">
+            </a>
+            {% elif list_question.difficulty_level == list_question.DifficultyLevels.INTERMEDIATE %}
+            <a class="btn btn-warning btn-circle difficulty_icon">
+            </a>
+            {% else %}
+            <a class="btn btn-danger btn-circle difficulty_icon">
+            </a>
+            {% endif %}
+          </div>
+              {% load knowledgebase_utils%}
+              {% if list_question.categories.all|get_mentor%}
+                {% for mentor in list_question.categories.all|get_mentor|slice:"3" %}
+                <div class="col-md-1 img-col">
+                  {% if mentor.userprofile.profile_picture_macroicon %}
+                    {% load account_utils %}
+                    {% get_user_hash mentor as hashed_email %}
+                    <a href="{% url 'ppi-accounts:profile_view' hashed_email %}" >
+                      <img alt="image" class="img-circle" src="{{ mentor.userprofile.profile_picture_macroicon.url}}"></a>
+                  {% else %}
+                      {% get_user_hash mentor as hashed_email %}
+                      <a href="{% url 'ppi-accounts:profile_view' hashed_email %}" >
+                        <img src="{% static 'images/userprofile_macroicon.jpg' %}" class="img-circle">
+                      </a>
+                  {% endif %}
+                  {% load account_utils %}
+                  {% get_user_hash mentor as hashed_email %}
+                  <a href="{% url 'ppi-accounts:profile_view' hashed_email %}" class="link">
+                   <figcaption>
+                    {% filter force_escape %}
+                    {{mentor.userprofile.first_name|title}}
+                    {% endfilter %}
+                  </figcaption></a>
+                  </div>
+                      {% endfor %}
+              {% else %}
+                <div class="col-md-1">
+                  <img src="/static/images/userprofile_macroicon.jpg" class="img-circle"><br>
+                </div>
+              {% endif %}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+          </div>
+          <div class="col-md-4">
+            <div class="well viewques">
+              <h4>
+                <strong><a href="javascript:void(0);" id="link-{{list_question.id}}" class="view_link">VIEW ANSWER</a>
+                </strong>
+              </h4>
+            </div>
+            <div id="viewdetails">
+              <div class="well viewans" id="demo-{{list_question.id}}">
+                {% autoescape off %}
+                <pre>{{list_question.answer}}</pre>
+                {% endautoescape %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <br /><br />
+        <div class="flag-question">
+                <!--             Flag popup -->
+                <div class="modal modal-vcenter fade" id="{{list_question.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                <h4 class="modal-title" id="myModalLabel"> I am flagging to report this question as... </h4>
+                            </div>
+                            <div class="modal-body">
+                                <form role="form">
+                                    <div class="radio">
+                                        <label id="label-1-qid-{{list_question.id}}">
+                                            <input type="radio" class="radio-1" name="optradio" id="qid-{{list_question.id}}"><b>Spam</b>
+                                            <p>
+                                                Exists only to promote a product or service
+                                            </p>
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label id="label-2-qid-{{list_question.id}}">
+                                            <input type="radio" class="radio-2" name="optradio" id="qid-{{list_question.id}}"><b>Rude or Abusive</b>
+                                            <p>
+                                                A reasonable person would find this content inappropriate for respectful discourse.
+                                            </p>
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label id="label-3-qid-{{list_question.id}}">
+                                            <input type="radio" class="radio-3" name="optradio" id="qid-{{list_question.id}}"><b>Very Low Quality</b>
+                                            <p>
+                                                This question has severe formatting or content problems. This question is unlikely to be salvageable through editing, and might need to be removed.
+                                            </p>
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label id="label-4-qid-{{list_question.id}}">
+                                            <input type="radio" class="radio-text" name="optradio" id="qid-{{list_question.id}}"><b> In need of moderator intervention </b>
+                                            <p>
+                                                A problem not listed above that requires action by a moderator. Be specific and detailed!
+                                            </p>
+                                        </label>
+                                        <textarea class="textarea-hide" id="text" placeholder="Something not quite right? Let us know about it, and please provide relevant links if possible." style="display:none;"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" disabled id="flag-button-{{list_question.id}}" class="btn btn-primary dynamic" data-dismiss="modal">Flag Question</button>
+                                <p class="btn-warning total-flags pull-left"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% load knowledgebase_utils %}
+        {% if list_questions.paginator %}
+        <div class="row">
+          <center>
+            <div class="span8 offset3">
+              <div class="pagination">
+                <ul class="pager">
+                  {% get_url_hash active_category=activecategory active_topic=activetopic active_difficulty=activedifficulty search_query=search as decoded%}
+                  <li>{% if list_questions.has_previous %}
+                    <a href="?page={{ list_questions.previous_page_number }}&param={{decoded}}">previous</a>
+                    {% endif %}
+                  </li>
+                  <li>
+                    <ul class="pagination">
+                      {% for p in list_questions.paginator.page_range %}
+
+                      <li {% ifequal p list_questions.number %} class="active" {% endifequal %}>
+                        <a href="?param={{decoded}}&amp;page={{p}}" >{{p}} </a>
+
+                      </li>
+                      {% empty %}
+                      <li class="active">
+                        <a href="?param={{decoded}}&amp;page=1" class="selected">1</a>
+                      </li>
+                      {% endfor %}
+                    </ul>
+                  </li>
+                  {% get_url_hash active_category=activecategory active_topic=activetopic active_difficulty=activedifficulty search_query=search as decoded%}
+                  <li>
+                    {% if list_questions.has_next %}
+                    <a href="?page={{ list_questions.next_page_number }}&param={{decoded}}">next</a>
+                    {% endif %}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </center>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+  {% block scripts_extend %}
+  <script type="text/javascript" src="{% static 'js/knowledgebase_view_question_answer.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/knowledgebase_view_category.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap-multiselect.js' %}"></script>
+  {% endblock %}

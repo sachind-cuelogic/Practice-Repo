@@ -1,0 +1,122 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/knowledgebase_view_category.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/knowledgebase_view_question_answer.css' %}">
+{% block headerkb %}
+
+<div class="jumbotron">
+    <div class="row">
+      <div class="col-sm-8 header">
+      {% url 'ppi-knowledgebase:category_view' as category_url %}
+      {% ifequal request.path category_url %}
+        <H3><strong>KNOWLEDGE BASE CATEGORIES</strong></H3>
+      {% else %}
+        <H3><strong>KNOWLEDGE BASE QUESTIONS &amp; ANSWERS</strong></H3>
+      {% endifequal %}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        {% url 'ppi-knowledgebase:category_view' as category_url %}
+        {% ifnotequal request.path category_url %}
+          <div class="col-sm-2" id="col-category">
+            <a href="{{category_url}}">
+              <strong><span class="glyphicon glyphicon-menu-hamburger"></span>View Categories</strong>
+            </a>
+          </div>
+        {% endifnotequal %}
+    </div>
+    </div>
+    <br>
+    <div class="row">
+      {% url 'ppi-knowledgebase:category_view' as category_url %}
+      {% ifequal request.path category_url %}
+        <form method="POST" action="{{category_url}}">
+      {% else %}
+        <form method="POST" action="{% url 'ppi-knowledgebase:view_knowledgebase' %}">
+      {% endifequal %}
+      {%csrf_token%}
+        <div class="col-sm-2" id="col-cat">
+          <select id="id_Category" class="btn btn-default" name="category_filter" multiple="multiple">
+            {% load knowledgebase_utils %}
+            {% for category in category_menu %}
+              <option class="btn-default" value="{{category.id}}"
+                {% for cat in activecategory|categoryobj %}
+                  {% ifequal cat.id category.id %}
+                    selected="selected"
+                  {% endifequal%}
+                {% endfor %}>
+              {{category.name}}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-sm-2">
+          <select id="id_Topic" class="btn btn-default" name="topic_filter" multiple="multiple" >
+            {% for topic in topic_menu %}
+              <option class="btn-default" value="{{topic.id}}"
+                {% for top in activetopic|topicobj %}
+                  {% ifequal top.id topic.id %}
+                    selected="selected"
+                  {% endifequal%}
+                {% endfor %}>
+              {{topic.name}}
+              </option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col-sm-2">
+          <select id="id_Difficulty" class="btn btn-default"  multiple="multiple" 
+          name="difficulty_filter">
+              <option class="btn-default" value=1 
+                {% for diff in activedifficulty %}
+                  {%ifequal "1" diff %}
+                    selected="selected"
+                  {% endifequal %}
+                {% endfor %}>
+                Beginner
+              </option>
+              <option class=" btn-default" value=2
+                {% for diff in activedifficulty %}
+                  {%ifequal "2" diff %}
+                    selected="selected"
+                  {% endifequal %}
+                {% endfor %}>
+                Intermediate
+              </option>
+              <option class="btn-default" value=3
+                {% for diff in activedifficulty %}
+                  {%ifequal "3" diff %}
+                    selected="selected"
+                  {% endifequal %}
+                {% endfor %}>
+                Advanced
+              </option>
+          </select>
+        </div>
+        {% url 'ppi-knowledgebase:category_view' as category_url %}
+        {% ifnotequal request.path category_url %}
+        <div class="col-sm-3" id="col-searchform">
+          <div class="searchform">
+                  <input type="search" id="search_query" name="search_query_input"
+                         class="form-control" value="{{search}}" 
+                         placeholder="Search"/>
+          </div>
+        </div>
+        {% endifnotequal %}
+        <div class="col-sm-1" id="col-search">
+          <button type="submit" class="btn btn-info" href="" id ="searchb" >Search</button>
+        </div>
+        {% url 'ppi-knowledgebase:search_question' as search_url %}
+        <div class="col-sm-1" id="col-filter">
+          {% ifequal request.path search_url %}
+            <a href="{% url 'ppi-knowledgebase:view_knowledgebase' %}">
+          {% else %}
+            <a href="{{request.path}}">
+          {% endifequal %}
+            <button type="button" class="btn btn-primary">Clear Filters</button>
+          </a>
+        </div>
+   </form>
+  </div>
+</div>
+{% endblock %}

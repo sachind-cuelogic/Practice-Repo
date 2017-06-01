@@ -1,0 +1,92 @@
+.well 
+{
+  min-height: auto;
+  padding: 25px;
+  margin-bottom: 0px;
+  background-color:#ffffff; 
+  border: 1px solid #E3E3E3;
+  border-radius: 4px;
+  text-align: left;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05) inset;
+}
+#viewdetails {
+  padding: 15px;
+  margin-left: -195px;
+  width: 305%;
+}
+ul.errorlist {
+  display:none;
+}
+.jumbotron{
+  padding-bottom: 4px;
+  padding-top: 20px;
+  background-color: #eee;
+  text-align : center;
+  width: 99%;
+  background-color: #eee;
+}
+.button{
+  box-shadow:3px 3px;
+  background:#888888;
+}
+.viewblock{
+  padding:9px;
+  min-height: 50px;
+  padding-left: 59px;
+}
+#header{
+  margin-left: -54px;
+}
+#headerlist{
+  margin-left: -135px;
+}
+.right-inner-addon i {
+    position: absolute;
+    right: 0px;
+    padding: 10px 12px;
+    pointer-events: none;
+}
+.right-inner-addon {
+    position: relative;
+}
+.right-inner-addon input {
+    padding-left: 15px;
+    border-radius: 7px;
+}
+.img-col{
+   width: 12.667%;
+}
+.btn-group>.btn:first-child {
+margin-left: -38px;
+}
+.catpage{
+  padding-left: 335px;
+  padding-right: 330px;
+}
+.pager li > a, .pager li > span {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    color: #000000;
+    display: inline-block;
+    list-style: outside none none;
+    margin: 20px 0;
+    padding: 6px 25px 5px 24px;
+    text-align: center;
+}
+.link{
+  color:  #333;
+  text-align: left;
+  font-size: 13px;
+}
+.dropdown-menu {
+  left: -45px;
+  right: 20px;
+}
+.displayquestion p{
+  font-size: 12px;
+}
+
+button.multiselect.dropdown-toggle.btn.btn-default {
+width: 140px;
+}

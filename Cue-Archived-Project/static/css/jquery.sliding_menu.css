@@ -1,0 +1,104 @@
+#sliding_menu_js {
+position: fixed;
+height: 100%;
+width: 210px;
+left: -300px;
+/*left: 0px;*/
+top: 0px;
+background: #f3f3f3;
+overflow: auto;
+color: #fff;
+z-index: 999;
+text-align: left;
+-webkit-box-shadow: 0px 1px 23px 2px #1f1f1f;
+box-shadow: 0px 1px 23px 2px #1f1f1f;
+padding-left:5px;
+font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+/* Header */
+#sliding_menu_js .header {
+position: relative;
+height:50px;
+border-bottom:solid 1px #E7E7E7;
+color: #E7E7E7;
+}
+/* Logo */
+#sliding_menu_js img {
+}
+/* Titulo */
+#sliding_menu_js h3 {
+font-size: 20px;
+position: absolute;
+bottom: 5px;
+width: 100%;
+text-align: center;
+color: #000;
+text-shadow: 0px 0px 3px rgba(255, 255, 255, 1);
+}
+#sliding_menu_js_btn h3 {
+font-size: 14px;
+}
+/* Menu - Items */
+#sliding_menu_js ul {
+padding: 0px;
+}
+#sliding_menu_js ul li {
+list-style-type: none;
+border-bottom: 1px solid #dddddd;
+
+}
+#sliding_menu_js ul li a {
+color: #000;
+padding: 10px 5px;
+display: block;
+text-decoration: none;
+font-size: 14px;
+}
+/* Boton */
+#sliding_menu_js_btn {
+text-align: center;
+width: 40px;
+height: 50px;
+position:absolute;
+top: 0px;
+overflow: visible;
+position: absolute;
+z-index: 999;
+background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAAU0lEQVRYhe3UMQrAIBBE0Y/HE+/fGSToOZJKYmHKTZP/YMFudhEGJD0KcABX8FQg7xY4Pwif02ZoWhZY39G2WQUYxF/fefkCyR6wByR7wB6Q/ukGPHLwi9CjDYcAAAAASUVORK5CYII=);
+background-position: left;
+background-repeat: no-repeat;
+background-color: #f3f3f3;
+background-size: 32px 32px;
+cursor:pointer;
+}
+/* Over */
+#sliding_menu_js_over {
+/*background: rgba(3,3,3,.5);*/
+    /*background: #000;*/
+height: 100%;
+width: 100%;
+position: fixed;
+top: 0px;
+z-index: 998;
+display: none;
+}
+.gi-3x{
+    top:13px;
+    font-size: 20px;
+    color:#000;
+    cursor:pointer;
+    padding-right:15px;
+}
+.glyphi{
+    margin-right:5px !important;
+}
+
+#nav-inner-start{
+
+}
+
+.notify-badage{
+    margin-top: -15px;
+    margin-left: 130px;
+    height:16px;
+}

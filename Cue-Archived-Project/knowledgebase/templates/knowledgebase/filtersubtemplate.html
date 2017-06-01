@@ -1,0 +1,10 @@
+{% for topic in topic_menu %}
+  <option class="btn-default" value="{{topic.id}}"
+    {% for top in activetopic %}
+      {% ifequal top.id topic.id %}
+        selected="selected"
+      {% endifequal%}
+    {% endfor %}>
+  {{topic.name}}
+  </option>
+{% endfor %}

@@ -1,0 +1,191 @@
+{% extends 'base.html' %} {% load staticfiles %} {% block scripts_extend %} {# following scripts are used only for TinyMCE Editor #}
+<!-- CDN hosted by Cachefly -->
+<script src="//tinymce.cachefly.net/4.2/tinymce.min.js"></script>
+<script src="{% static 'js/knowledgebase_scripts.js' %}"></script>
+<script src="{% static 'js/bootstrap-tagsinput.min.js' %}"></script>
+
+
+{% endblock scripts_extend %} {% block content %}
+<div class="row">
+{% load knowledgebase_utils %}
+
+<center id ="flags-message">
+
+{% get_flag_errors qa.id as flag_errors %}
+{% if flag_errors %}
+
+<h4>Flag errors</h4>
+<div class="alert alert-warning">
+{% for flag_error in flag_errors %}
+    The question has been marked <strong>{{flag_error}}</strong> by <strong> {{flag_error.user}}</strong> <br> 
+{% endfor %}
+</div>
+
+{% endif %}
+
+</center>
+</div>
+<div class="container">
+    {% can_delete user.userprofile.user_type request.user qa.id as user_can_delete %}
+
+<!-- Delete Buttoon -->
+{% if user_can_delete %}
+<p id="delete-question" class="btn btn-danger btn-sm pull-right">Delete Question</p></button>
+{% endif %}
+
+    <div class="col-md-7 border_right">
+    {% load knowledgebase_utils %}
+       {% url_encode qa.id next as encoded_url %}
+        <form class="form-signup" action="{% url 'ppi-knowledgebase:question_answer_add' %}?param={{ encoded_url }}" method="POST" role="form">
+            {% csrf_token %}
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-md-3">
+                        Category:
+                    </label>
+                    <div class="col-md-8">
+                        {{ add_question_form.categories }} {{ add_question_form.categories.errors }}
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-md-3">
+                        Topic:
+                    </label>
+                    <div class="col-md-8">
+                        {{ add_question_form.topics }} {{ add_question_form.topics.errors }}
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-md-3">
+                        Difficulty:
+                    </label>
+                    <div class="col-md-6">
+                        {{ add_question_form.difficulty_level }} {{ add_question_form.difficulty_level.errors }}
+                    </div>
+                </div>
+            </div>
+            <br />
+                <div class="row">
+                    <label class="col-md-3">
+                        Tags:
+                    </label>
+                    <div class="col-md-6">
+                        {{ add_question_form.tags}}
+                        {{ add_question_form.tags.errors }}
+                    </div>
+                </div>
+            <br />
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-md-3">
+                        Question:
+                    </label>
+                    <div id="question" class="col-md-8">
+                        {{ add_question_form.question }} {{ add_question_form.question.errors }}
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-md-3">
+                        Answer:
+                    </label>
+                    <div id="answer" class="col-md-8">
+                        {{ add_question_form.answer }} {{ add_question_form.answer.errors }}
+                    </div>
+                </div>
+            </div>
+            <br />
+            <input id="next" type="hidden" name="next" value="{{ next }}">
+            <div class="form-group">
+                <label class="col-md-3">
+                </label>
+                <div id="need_button" class="col-md-2">
+                </button>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" name="submit" value="save" class="btn btn-primary">
+                        Save</button>
+                </div>
+                {% load knowledgebase_utils %} {% can_publish user.userprofile.user_type as can_published %} {% if can_published %}
+                <div class="col-md-2">
+                    <button type="submit" name="submit" value="publish" class="btn btn-primary">
+                        Publish</button>
+                </div>
+                
+                <!-- Flag Button --> 
+                {% check_if_flagged qa.id as is_flagged %} 
+                {% if is_flagged %}
+                <div class="col-md-2">
+                    <a id="popup" data-toggle="modal" data-target="#modal-{{qa.id}}" class="btn btn-primary">
+                    Remove Flag</a>
+                </div>
+                {% endif %}
+
+                {% else %}
+                <div class="col-md-2">
+                    <button type="submit" name="submit" value="submission" class="btn btn-primary">
+                        Submit</button>
+                </div>
+                {% endif %}
+            </div>
+            <br />
+        </form>
+    </div>
+    <div id="review-column" class="col-md-5 ">
+        <p>Review Notes</p>
+        <div class="detailBox">
+            <div class="titleBox">
+                <label>Comment Box</label>
+            </div>
+            <div class="actionBox">
+                <ul class="commentList">
+                </ul>
+                <form id="addCommentForm" class="form-inline" role="form">
+                    <div class="form-group">
+                        <textarea class="form-control-comment" id="{{qa.id}}" placeholder="Your comments" /></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input class="btn btn-default" type="submit" id="submit" value="Add">
+                    </div>
+                </form>
+                <div id="comment-error">
+                </div>
+            </div>
+        </div>
+        <input type="hidden" id="session_user" value='{{request.user}}'>
+    </div>
+</div>
+
+<div class="flag-question">
+<!--             Flag popup -->
+<div class="modal modal-vcenter fade" id="modal-{{qa.id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel"> Remove Flag </h4>
+      </div>
+      <div class="modal-body">
+        <p> Are you sure you want to remove all flags of this question. </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="unflag-button-{{qa.id}}" class="btn btn-primary unflag" data-dismiss="modal">Yes</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock content %} {% block stylesheets_extend %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/knowledgebase_add_question.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstraptags.css' %}">
+
+{% endblock %}

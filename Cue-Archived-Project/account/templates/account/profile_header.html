@@ -1,0 +1,39 @@
+{% extends 'header.html' %}
+
+{% load staticfiles %}
+
+{% block header_extend %}
+
+<ul class="nav navbar-nav">
+  <li id="notification_li">
+    <span class="notify_me"></span>
+     <a href="#" id="notificationLink"> <span class="glyphicon glyphicon-bell"></span></a>
+    <div id="notificationContainer">
+      <div id="notificationTitle">Notifications</div>
+      <div id="notificationsBody" class="notifications">
+        <ul id="ajax-notification">
+        </ul>
+      </div>
+      <div id="notificationFooter"><a href="{% url 'ppi-knowledgebase:viewe_all_notifications' request.user.id %}">See All</a></div>
+    </div>
+  </li>
+  <li >
+    <a href ="#" >
+      {% if user.userprofile.profile_picture_icon %}
+        <img src="{{ user.userprofile.profile_picture_icon.url }}" class="img-circle" width="20" height="20">
+      {% else %}
+        <img src="{% static 'images/userprofile_icon.jpg' %}" class="img-circle">
+      {% endif %}
+
+      {% if user.userprofile.first_name %}
+        {{ user.userprofile.first_name }}
+      {% else %}
+        {{ user.email }}
+      {% endif %}
+    </a>
+  </li>
+  <li>
+    <a href="{% url 'ppi-auth:logout' %}?next=/"><span class="glyphicon glyphicon-log-out"> </span></a>
+  </li>
+</ul>
+{% endblock header_extend %}
