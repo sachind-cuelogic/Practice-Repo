@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+                font-size:14px;
+            }
+            .head{
+                position:relative;
+                height:100%;
+            }
+
+            .header{
+                border-bottom:1px solid grey;
+                padding:5px 10px;
+                overflow:hidden
+            }
+
+            .incident{
+                width:20%;
+                float:left;
+            }
+
+            .description{
+                width:77%;
+                float:left;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div class="head">
+            <div class="header">
+                <div class="incident">
+                    <span><strong>Incident ID</strong></span>
+                    <span>{{incident_id}}</span>
+                </div>
+                <div class="description">
+                    <span><strong>Description</strong></span>
+                    <span style="padding: 0px 20px;margin: 0px;font-size:12px;">{{description}}</span>
+                </div>
+            </div>
+            <br>
+
+            <div style="width:100%;clear:both;padding:5px;">
+
+                {% for element in ticket_messages %}
+                    {% if element.comment_text %}
+                        {% if element.sender == incident_creator %}
+
+                            <div style="width:100%;padding:5px 0; overflow:hidden;">
+                                <h3 style="text-align:left;margin:0 0 0px;background:#CCC;font-size:14px;padding:5px;width:50%;border-top-right-radius:4px;border-top-left-radius:4px;">
+                                    {{element.sender}}
+                                    <span style="float:right;display:inline-block">Date: {{element.created_at |date:"d M Y"}} {{element.created_at |time:"H:i"}}</span>
+                                </h3>
+
+                                <p style="float:left;font-size:12px;width:50%;background:#d3f1c7;padding:5px;margin-top: 0;border-bottom-right-radius:4px;border-bottom-left-radius:4px;">
+                                    {{element.comment_text}}
+                                </p>
+                            </div>
+                        {% else %}
+
+                            <div style="width:100%;padding:5px 0; overflow:hidden;">
+                                <h3 style="text-align:left;margin:0 0 0px;background:#CCC;font-size:14px;padding:5px;width:50%;float:right;border-top-right-radius:4px;border-top-left-radius:4px;">
+                                    {{element.user}}
+                                    <span style="float:right;display:inline-block">Date: {{element.created_at |date:"d M Y"}} {{element.created_at |time:"H:i"}}</span>
+                                </h3>
+                                <p style="font-size:12px;float:right;width:50%;background:#d3f1c7;padding:5px;margin-top: 0;border-bottom-right-radius:4px;border-bottom-left-radius:4px;">
+                                    {{element.comment_text}}</p>
+                            </div>
+                        {% endif %}
+                    {% else %}
+
+                        <div style="width:100%;padding:5px 0; overflow:hidden">
+                            <h3 style="text-align:left;margin:0 0 0px;background:#CCC;font-size:14px;padding:5px;width:50%;">
+                                {{element.user}}
+                                <span style="float:right;display:inline-block">Date: {{element.created_at |date:"d M Y"}} {{element.created_at |time:"H:i"}}</span>
+                            </h3>
+                            <p style="font-size:12px;float:left;width:25%;background:green;border-radius:3px;margin-top:0;padding:1px">
+                                <img style="border:1px solid #fff;border-radius:1px;max-width:100%;display:block;"
+                                     src="{{element.attachment.attachment.url}}">
+                            </p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </body>
+</html>

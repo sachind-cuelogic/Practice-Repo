@@ -1,0 +1,5 @@
+# Remove System Generated Notification
+THRESHOLD_DAYS_FOR_SYSTEM_NOTIFICATION_REMOVAL = 15
+
+# Remove User Generated Notification
+THRESHOLD_DAYS_FOR_USER_NOTIFICATION_REMOVAL = 90

@@ -1,0 +1,1 @@
+This folder is to save public messages of ticket and export it in mail.
